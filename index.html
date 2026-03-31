@@ -1,12 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Kwa Jerry Fast Food | Since 2006</title>
-    <!-- Font Awesome 6 -->
+    <title>Kwa Jerry Fast Food </title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -165,7 +165,6 @@
             font-weight: 500;
         }
 
-        /* Regular Hero */
         .hero {
             text-align: center;
             padding: 1.8rem 1rem;
@@ -191,7 +190,6 @@
             padding: 1rem;
         }
 
-        /* Page Transitions */
         .page {
             display: none;
             animation: fadeIn 0.3s ease;
@@ -213,7 +211,6 @@
             color: #000;
         }
 
-        /* ========== 3-COLUMN GRID FOR ALL CARDS ========== */
         .branch-grid, .stats-grid, .contact-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -256,7 +253,6 @@
             display: inline-block;
         }
 
-        /* Stats Cards - 3 columns */
         .stat-card {
             background: white;
             text-align: center;
@@ -272,7 +268,6 @@
             font-size: 0.7rem;
         }
 
-        /* Contact Cards - 3 columns */
         .contact-card {
             background: white;
             border-radius: 16px;
@@ -307,7 +302,6 @@
             cursor: pointer;
         }
 
-        /* ========== MENU GALLERY - SCROLLING HORIZONTAL WITH A4 RATIO ========== */
         .gallery-scroll-container {
             overflow-x: auto;
             overflow-y: hidden;
@@ -330,7 +324,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             transition: transform 0.2s;
         }
-        /* A4 Ratio (1:√2 ≈ 1:1.414) - height is 1.414 times width */
+
         .gallery-item-img {
             width: 100%;
             aspect-ratio: 1 / 1.414;
@@ -371,7 +365,6 @@
             }
         }
 
-        /* ========== ORDER PAGE - 3 COLUMN GRID FOR MENU ITEMS ========== */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -394,14 +387,14 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .item-info h4 {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             line-height: 1.2;
         }
         .item-price {
             color: #990000;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             margin: 0.2rem 0;
         }
         .item-category {
@@ -586,7 +579,10 @@
                 padding: 0.5rem 0.2rem;
             }
             .item-info h4 {
-                font-size: 0.65rem;
+                font-size: 0.6rem;
+            }
+            .item-price {
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -600,11 +596,11 @@
         </div>
         <div class="logo">
             <h1>KWA JERRY</h1>
-            <p>Est. 2006 • Kotas • Grills</p>
+            <p>Fast Food • Est. 2006</p>
         </div>
     </div>
     <div class="branch-badge">
-        <i class="fas fa-store"></i> 3 Branches
+        <i class="fas fa-store"></i> order now
     </div>
 </header>
 
@@ -621,7 +617,7 @@
     <div class="hero-section">
         <div class="hero-content">
             <h2>WOLA WOOLA!!</h2>
-            <p>Welcome to Kwa Jerry Fast Food • Since 2006</p>
+            <p>Welcome to Kwa Jerry Fast Food</p>
         </div>
     </div>
     <div class="container">
@@ -634,7 +630,6 @@
     </div>
 </div>
 
-<!-- MENU GALLERY - SCROLLING WITH A4 RATIO IMAGES -->
 <div id="menu-page" class="page">
     <div class="hero">
         <h2>Our Menu Gallery</h2>
@@ -643,13 +638,11 @@
     <div class="container">
         <div class="gallery-scroll-container">
             <div class="gallery-scroll" id="menuGalleryScroll">
-                <!-- Gallery images will be injected here -->
             </div>
         </div>
     </div>
 </div>
 
-<!-- ORDER ONLINE - 3 COLUMN GRID -->
 <div id="order-page" class="page">
     <div class="hero">
         <h2>Order Online</h2>
@@ -660,7 +653,7 @@
             <div class="section-title"><i class="fas fa-store"></i> Select Collection Branch</div>
             <div class="branch-grid" id="orderBranchGrid"></div>
         </div>
-        <div class="section-title"><i class="fas fa-utensils"></i> Menu Items</div>
+        <div class="section-title"><i class="fas fa-utensils"></i> Full Menu - Kwa Jerry Fast Food</div>
         <div id="orderMenuGrid" class="menu-grid"></div>
         
         <div class="cart-panel" id="cartPanel">
@@ -685,7 +678,7 @@
     <div class="container">
         <div style="background:white; border-radius:28px; padding:1.5rem;">
             <h3 style="color:#990000;">Who We Are</h3>
-            <p style="line-height:1.7; margin:0.8rem 0; font-size:0.9rem;">Kwa Jerry Fast Food started in 2006 with a simple mission: serve delicious, affordable fast food with authentic South African flavor. From our humble beginnings, we've grown to three convenient locations across Johannesburg, serving thousands of satisfied customers daily.</p>
+            <p style="line-height:1.7; margin:0.8rem 0; font-size:0.9rem;">Kwa Jerry Fast Food started in 2006 with a simple mission: serve delicious, affordable fast food. From our humble beginnings, we've grown to three convenient locations across Gauteng, serving our satisfied customers daily.</p>
             <h3 style="color:#990000; margin-top:1.2rem;">Our Values</h3>
             <ul style="margin-left:1.2rem; line-height:1.7; font-size:0.9rem;">
                 <li>Fresh ingredients prepared daily</li>
@@ -694,7 +687,7 @@
                 <li>Community-focused business</li>
             </ul>
             <h3 style="color:#990000; margin-top:1.2rem;">Opening Hours</h3>
-            <p>Monday - Sunday: 10:00 AM - 10:00 PM<br>Public Holidays: 10:00 AM - 8:00 PM</p>
+            <p>Monday - Sunday: 10:00 AM - 10:00 PM<br>Public Holidays: 10:00 AM - 10:00 PM</p>
         </div>
     </div>
 </div>
@@ -719,7 +712,7 @@
                         <label>Branch</label>
                         <select id="contactBranch" required>
                             <option value="">Select branch</option>
-                            <option value="Big Street Branch">Big Street Branch - 2202 Phatudi Kagiso</option>
+                            <option value="Big Street Branch">Big Street Branch - 2202 Phatudi Kagiso Avenue</option>
                             <option value="Ext 12 Branch">Ext 12 Branch - 16352 Geba Street</option>
                             <option value="Protea Glen Branch">Protea Glen Branch - 20910 Blackberry street</option>
                         </select>
@@ -748,7 +741,6 @@
     <div class="developer-credit">Developed by <a href="https://factorx.co.za" target="_blank">factorx.co.za</a></div>
 </footer>
 
-<!-- MODAL for menu items -->
 <div id="menuModal" class="modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
@@ -758,8 +750,7 @@
 </div>
 
 <script>
-    // ========== YOUR MENU GALLERY IMAGES (A4 Ratio) ==========
-    // Paste your image URLs here - each image will display in A4 ratio (1:1.414)
+
     const menuGalleryImages = [
         { url: "kotas.png", title: "KOTA & MODERN J KOTAS", desc: "Kwa Jerry Kotas" },
         { url: "platters.png", title: "PLATTERS", desc: "Kwa Jerry Platters" },
@@ -767,21 +758,48 @@
         { url: "ribs.png", title: "MEALS / RIBS & SALADS", desc: "Kwa jerry meals, ribs & salads" },
         { url: "chips.png", title: "CHIPS & DAGWOODS", desc: "Kwa jerry dagwoods" }
     ];
-    // ========================================================
 
-    // Branch Data
     const branches = [
         { id: "big_street", name: "Big Street", address: "2202 Phatudi Kagiso", whatsapp: "0733963205" },
         { id: "ext12", name: "Ext 12", address: "16352 Geba Street Kagiso", whatsapp: "0698106598" },
         { id: "protea_glen", name: "Protea Glen", address: "20910 Blackberry ext 29", whatsapp: "0633579191" }
     ];
 
-    // Menu items for ordering (3-column)
     const orderMenuItems = [
-        { name: "J2 KOTA", price: 30, category: "Kotas" }, { name: "J4 KOTA", price: 35, category: "Kotas" }, { name: "J6 KOTA", price: 38, category: "Kotas" },
-        { name: "J Tower", price: 100, category: "Modern" }, { name: "J King", price: 75, category: "Modern" }, { name: "Quarter Chicken", price: 30, category: "Chicken" },
-        { name: "Half Chicken", price: 60, category: "Chicken" }, { name: "Ribs Platter", price: 105, category: "Platters" }, { name: "Steak Platter", price: 95, category: "Platters" },
-        { name: "12 Wings", price: 70, category: "Specialty" }, { name: "Steak+Chips", price: 75, category: "Specialty" }, { name: "Small Chips", price: 25, category: "Sides" }
+        // KOTAS
+        { name: "J2 KOTA (+ Cheese)", price: 30, category: "KOTAS" }, { name: "J3 KOTA (+ Vienna)", price: 33, category: "KOTAS" }, { name: "J4 KOTA (+ Vienna & Cheese)", price: 35, category: "KOTAS" },
+        { name: "J5 KOTA (+ Russian)", price: 37, category: "KOTAS" }, { name: "J6 KOTA (+ Burger & Cheese)", price: 38, category: "KOTAS" }, { name: "J7 KOTA (+ Russian & Cheese)", price: 40, category: "KOTAS" },
+        { name: "J8 KOTA (+ Russian & Vienna)", price: 42, category: "KOTAS" }, { name: "J9 KOTA (Russian+Vienna+Cheese)", price: 45, category: "KOTAS" },
+        // MODERN J KOTAS
+        { name: "J Tower (Burger+Russian+Steak+Ribs+Eggs)", price: 100, category: "MODERN KOTAS" }, { name: "J King (Burger+Russian+Ribs+Eggs)", price: 75, category: "MODERN KOTAS" },
+        { name: "J Queen (Russian+Cheese+Burger+4Wings+Wors)", price: 115, category: "MODERN KOTAS" }, { name: "J Prince (Russian+Cheese+Burger+4Wings)", price: 95, category: "MODERN KOTAS" },
+        { name: "J Princess (Burger+Cheese+Russian+Vienna)", price: 55, category: "MODERN KOTAS" },
+        // CHICKEN & MEALS
+        { name: "Quarter Chicken Only", price: 30, category: "CHICKEN" }, { name: "Half Chicken Only", price: 60, category: "CHICKEN" }, { name: "Full Chicken Only", price: 100, category: "CHICKEN" },
+        { name: "Quarter Chicken + Chips + Toast", price: 45, category: "CHICKEN MEALS" }, { name: "Quarter Chicken + Chips + Toast + Salad", price: 70, category: "CHICKEN MEALS" },
+        { name: "Quarter Chicken + Salad + Toast", price: 55, category: "CHICKEN MEALS" }, { name: "Half Chicken + Chips + Toast + Salad", price: 95, category: "CHICKEN MEALS" },
+        { name: "Half Chicken + Chips + Toast", price: 70, category: "CHICKEN MEALS" }, { name: "Full Chicken + Small Chips", price: 120, category: "CHICKEN MEALS" },
+        // PLATTERS
+        { name: "Platter 1: Ribs + 2 Wings + Wors", price: 105, category: "PLATTERS" }, { name: "Platter: Chicken Kibab + 2 Wings + Wors", price: 85, category: "PLATTERS" },
+        { name: "Platter: Steak + Wing + Wors", price: 95, category: "PLATTERS" }, { name: "Platter for Two: Steak + Quarter Chicken", price: 110, category: "PLATTERS" },
+        { name: "Platter for Two: Ribs + Steak", price: 140, category: "PLATTERS" }, { name: "Platter for Three: Steak+Quarter+Wors+Kibab", price: 190, category: "PLATTERS" },
+        // SPECIALITY & RIBS
+        { name: "12 Wings", price: 70, category: "SPECIALITY" }, { name: "12 Wings + Chips", price: 85, category: "SPECIALITY" }, { name: "6 Wings + Chips", price: 45, category: "SPECIALITY" },
+        { name: "Steak + Chips + Wors", price: 75, category: "SPECIALITY" }, { name: "Mini J Ribs (200g + 2 Wings + Chips+Salad)", price: 85, category: "RIBS" },
+        { name: "J Spare Ribs (400g + 4 Wings + Chips+Salad)", price: 155, category: "RIBS" },
+        // PAP / RICE MEALS
+        { name: "Pap/Rice + Steak (2 Salads)", price: 55, category: "PAP & RICE" }, { name: "Pap/Rice + Chicken (2 Salads)", price: 45, category: "PAP & RICE" },
+        { name: "Pap + Half Chicken (2 Salads)", price: 95, category: "PAP & RICE" }, { name: "Pap + Full Chicken (2 Salads)", price: 145, category: "PAP & RICE" },
+        // DAGWOODS & CHIPS
+        { name: "Dagwood (Chips+Burg+Lettuce+Cheese+Egg)", price: 47, category: "DAGWOODS" }, { name: "Dagwood (Chips+Lettuce+Cheese+Egg+Rib)", price: 52, category: "DAGWOODS" },
+        { name: "Dagwood Deluxe (Chips+Burger+Rib+Tomato+Egg)", price: 85, category: "DAGWOODS" }, { name: "Small Chips", price: 25, category: "CHIPS" },
+        { name: "Medium Chips", price: 40, category: "CHIPS" }, { name: "Large Chips", price: 50, category: "CHIPS" },
+        // EXTRAS & SALADS
+        { name: "Green Salad", price: 35, category: "SALADS" }, { name: "Green Salad + Chicken Fillets", price: 55, category: "SALADS" },
+        { name: "Potato Salad", price: 25, category: "SALADS" }, { name: "Chakalaka", price: 20, category: "SALADS" },
+        { name: "Extra: Egg", price: 4, category: "EXTRAS" }, { name: "Extra: Boneless Rib", price: 20, category: "EXTRAS" },
+        { name: "Extra: Burger Patty", price: 15, category: "EXTRAS" }, { name: "Extra: Russian", price: 20, category: "EXTRAS" },
+        { name: "Extra: Vienna", price: 10, category: "EXTRAS" }, { name: "Extra: Cheese Slice", price: 3, category: "EXTRAS" }
     ];
 
     let selectedBranch = null;
@@ -789,7 +807,7 @@
 
     function renderStats() {
         const statsDiv = document.getElementById("statsGrid");
-        if(statsDiv) statsDiv.innerHTML = `<div class="stat-card"><div class="stat-number">20+</div><div>Years</div></div><div class="stat-card"><div class="stat-number">3</div><div>Branches</div></div><div class="stat-card"><div class="stat-number">50+</div><div>Items</div></div>`;
+        if(statsDiv) statsDiv.innerHTML = `<div class="stat-card"><div class="stat-number">20+</div><div>Years</div></div><div class="stat-card"><div class="stat-number">3</div><div>Branches</div></div><div class="stat-card"><div class="stat-number">80+</div><div>Items</div></div>`;
     }
 
     function renderBranches(containerId, isSelectable = true) {
@@ -808,7 +826,6 @@
         });
     }
 
-    // Scrollable Gallery with A4 ratio images
     function renderScrollGallery() {
         const galleryContainer = document.getElementById("menuGalleryScroll");
         if(!galleryContainer) return;
@@ -829,7 +846,6 @@
         });
     }
 
-    // Order menu - 3 column grid
     function renderOrderMenu() {
         const container = document.getElementById("orderMenuGrid");
         if(!container) return;
@@ -888,16 +904,16 @@
 
     function validateOrder() {
         const warning = document.getElementById("orderWarning");
-        if(!selectedBranch) { if(warning) warning.innerHTML = "Select a branch first"; return false; }
-        if(Object.keys(cart).length === 0) { if(warning) warning.innerHTML = "Cart is empty"; return false; }
-        if(warning) warning.innerHTML = "✓ Ready to order"; return true;
+        if(!selectedBranch) { if(warning) warning.innerHTML = "⚠️ Select a branch first"; return false; }
+        if(Object.keys(cart).length === 0) { if(warning) warning.innerHTML = "⚠️ Cart is empty"; return false; }
+        if(warning) warning.innerHTML = "✓ Ready to order via WhatsApp"; return true;
     }
 
     function sendWhatsApp() {
         if(!validateOrder()) return;
         let itemsList = "", total = 0;
         for(let key in cart) { const item = cart[key]; const subtotal = item.price * item.quantity; total += subtotal; itemsList += `- ${item.name} x ${item.quantity} = R${subtotal}\n`; }
-        const msg = encodeURIComponent(`KWA JERRY FAST FOOD ORDER\n\nBranch: ${selectedBranch.name}\nAddress: ${selectedBranch.address}\n\nOrder:\n${itemsList}\nTOTAL: R${total.toFixed(2)}\n\nThank you for choosing Kwa Jerry!`);
+        const msg = encodeURIComponent(`🍔 KWA JERRY FAST FOOD ORDER 🍟\n\n📍 Branch: ${selectedBranch.name}\n🏠 Address: ${selectedBranch.address}\n\n📋 ORDER:\n${itemsList}\n💰 TOTAL: R${total.toFixed(2)}\n\n🙏 Thank you for choosing Kwa Jerry! Since 2006.`);
         let phone = selectedBranch.whatsapp.replace(/\D/g, '');
         if(phone.length === 10 && phone.startsWith('0')) phone = '27' + phone.substring(1);
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
