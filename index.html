@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Kwa Jerry Fast Food</title>
-    <!-- Favicon - emoji-based + data URI fallback for full compatibility -->
-    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23990000'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3E🍔%3C/text%3E%3C/svg%3E">
-    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23990000'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3E🍔%3C/text%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23990000'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3E🍔%3C/text%3E%3C/svg%3E">
+    <!-- Favicon - now uses custom logo.png with fallback to burger emoji on red background -->
+    <link rel="icon" type="image/png" href="logo.png" onerror="this.onerror=null; this.href='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23990000\'/%3E%3Ctext x=\'50\' y=\'70\' font-size=\'50\' text-anchor=\'middle\' fill=\'white\' font-family=\'Arial\'%3E🍔%3C/text%3E%3C/svg%3E'">
+    <link rel="shortcut icon" href="logo.png" onerror="this.onerror=null; this.href='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23990000\'/%3E%3Ctext x=\'50\' y=\'70\' font-size=\'50\' text-anchor=\'middle\' fill=\'white\' font-family=\'Arial\'%3E🍔%3C/text%3E%3C/svg%3E'">
+    <link rel="apple-touch-icon" href="logo.png" onerror="this.onerror=null; this.href='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23990000\'/%3E%3Ctext x=\'50\' y=\'70\' font-size=\'50\' text-anchor=\'middle\' fill=\'white\' font-family=\'Arial\'%3E🍔%3C/text%3E%3C/svg%3E'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -35,7 +35,6 @@
             border-radius: 10px;
         }
 
-        /* Header - Mobile Optimized */
         header {
             background: #000000;
             padding: 0.6rem 1rem;
@@ -94,7 +93,6 @@
             white-space: nowrap;
         }
 
-        /* Navigation */
         nav {
             background: #1a1a1a;
             padding: 0.5rem 1rem;
@@ -128,7 +126,6 @@
             color: white;
         }
 
-        /* Hero Section */
         .hero-section {
             position: relative;
             height: 45vh;
@@ -304,7 +301,6 @@
             cursor: pointer;
         }
 
-        /* Gallery - keep scrollable */
         .gallery-scroll-container {
             overflow-x: auto;
             overflow-y: hidden;
@@ -359,7 +355,7 @@
             .gallery-item { flex: 0 0 60%; }
         }
 
-        /* MENU GRID - 3 COLUMNS LIKE INSTAGRAM (compact) */
+        /* MENU GRID - 3 COLUMNS LIKE INSTAGRAM */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -420,8 +416,46 @@
         .add-to-cart:hover {
             background: #990000;
         }
+        
+        /* Pap/Rice selector modal or inline? Using a small inline selector for relevant items */
+        .starch-selector {
+            display: flex;
+            gap: 0.3rem;
+            justify-content: center;
+            margin-top: 0.3rem;
+            width: 100%;
+        }
+        .starch-option {
+            background: #f0f0f0;
+            border: none;
+            padding: 0.2rem 0.4rem;
+            border-radius: 20px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .starch-option.selected {
+            background: #990000;
+            color: white;
+        }
+        .starch-option.pap-selected {
+            background: #990000;
+            color: white;
+        }
+        .starch-option.rice-selected {
+            background: #990000;
+            color: white;
+        }
+        .item-starch-note {
+            font-size: 0.5rem;
+            color: #990000;
+            margin-top: 0.2rem;
+            font-weight: 500;
+        }
 
-        /* Cart Panel - compact */
+        /* Cart Panel */
         .cart-panel {
             background: white;
             border-radius: 20px;
@@ -473,7 +507,6 @@
             font-size: 0.65rem;
         }
 
-        /* Contact Form compact */
         .contact-form-container {
             background: white;
             border-radius: 20px;
@@ -527,7 +560,6 @@
             text-decoration: none;
         }
 
-        /* Responsive: on very small screens keep 3 columns but shrink further */
         @media (max-width: 450px) {
             .menu-grid {
                 gap: 0.4rem;
@@ -546,21 +578,6 @@
                 padding: 0.2rem 0.4rem;
                 width: 90%;
             }
-            .branch-grid, .stats-grid, .contact-grid {
-                gap: 0.5rem;
-            }
-            .branch-card h3 {
-                font-size: 0.65rem;
-            }
-        }
-        
-        @media (max-width: 380px) {
-            .menu-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .item-info h4 {
-                font-size: 0.55rem;
-            }
         }
         
         .order-branch-section {
@@ -570,31 +587,6 @@
             color: #990000;
             font-size: 0.65rem;
             margin-top: 0.3rem;
-        }
-        
-        /* Modal minimal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 1000;
-        }
-        .modal-content {
-            background: white;
-            max-width: 90%;
-            margin: 20px auto;
-            border-radius: 24px;
-            padding: 1rem;
-        }
-        .close-modal {
-            float: right;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #990000;
         }
     </style>
 </head>
@@ -656,7 +648,7 @@
 <div id="order-page" class="page">
     <div class="hero">
         <h2>Order Online</h2>
-        <p>Select branch • Add items</p>
+        <p>Select branch • Add items • Choose Pap or Rice</p>
     </div>
     <div class="container">
         <div class="order-branch-section">
@@ -751,7 +743,6 @@
 </footer>
 
 <script>
-    // CORRECTED BRANCHES: Phatudi Kagiso Avenue
     const branches = [
         { id: "big_street", name: "Big Street", address: "2202 Phatudi Kagiso Avenue", whatsapp: "0733963205" },
         { id: "ext12", name: "Ext 12", address: "16352 Geba Street Kagiso", whatsapp: "0698106598" },
@@ -766,25 +757,63 @@
         { url: "chips.png", title: "CHIPS & DAGWOODS", desc: "Crispy chips" }
     ];
 
+    // Menu items with starch selection for PAP/RICE items
+    // Items that need starch choice: all PAP & RICE category items
     const orderMenuItems = [
-        { name: "J2 KOTA", price: 30, category: "KOTA" }, { name: "J3 KOTA", price: 33, category: "KOTA" }, { name: "J4 KOTA", price: 35, category: "KOTA" },
-        { name: "J5 KOTA", price: 37, category: "KOTA" }, { name: "J6 KOTA", price: 38, category: "KOTA" }, { name: "J7 KOTA", price: 40, category: "KOTA" },
-        { name: "J8 KOTA", price: 42, category: "KOTA" }, { name: "J9 KOTA", price: 45, category: "KOTA" }, { name: "J Tower", price: 100, category: "MODERN" },
-        { name: "J King", price: 75, category: "MODERN" }, { name: "J Queen", price: 115, category: "MODERN" }, { name: "J Prince", price: 95, category: "MODERN" },
-        { name: "J Princess", price: 55, category: "MODERN" }, { name: "Quarter Chick", price: 30, category: "CHICKEN" }, { name: "Half Chick", price: 60, category: "CHICKEN" },
-        { name: "Full Chick", price: 100, category: "CHICKEN" }, { name: "Qtr+Chps+Toast", price: 45, category: "MEAL" }, { name: "Qtr+Chps+Salad", price: 70, category: "MEAL" },
-        { name: "Half+Chps+Toast", price: 70, category: "MEAL" }, { name: "Platter Ribs", price: 105, category: "PLATTER" }, { name: "Platter Steak", price: 95, category: "PLATTER" },
-        { name: "12 Wings", price: 70, category: "WINGS" }, { name: "12Wings+Chips", price: 85, category: "WINGS" }, { name: "6Wings+Chips", price: 45, category: "WINGS" },
-        { name: "Steak+Chips", price: 75, category: "GRILL" }, { name: "Mini J Ribs", price: 85, category: "RIBS" }, { name: "J Spare Ribs", price: 155, category: "RIBS" },
-        { name: "Pap+Steak", price: 55, category: "PAP" }, { name: "Pap+Chicken", price: 45, category: "PAP" }, { name: "Dagwood", price: 47, category: "DAGWOOD" },
-        { name: "Dag Deluxe", price: 85, category: "DAGWOOD" }, { name: "Small Chips", price: 25, category: "CHIPS" }, { name: "Medium Chips", price: 40, category: "CHIPS" },
-        { name: "Large Chips", price: 50, category: "CHIPS" }, { name: "Green Salad", price: 35, category: "SALAD" }, { name: "Potato Salad", price: 25, category: "SALAD" },
-        { name: "Chakalaka", price: 20, category: "SALAD" }, { name: "Extra Egg", price: 4, category: "EXTRA" }, { name: "Extra Russian", price: 20, category: "EXTRA" },
-        { name: "Extra Cheese", price: 3, category: "EXTRA" }
+        { name: "J2 KOTA", price: 30, category: "KOTA", needsStarch: false },
+        { name: "J3 KOTA", price: 33, category: "KOTA", needsStarch: false },
+        { name: "J4 KOTA", price: 35, category: "KOTA", needsStarch: false },
+        { name: "J5 KOTA", price: 37, category: "KOTA", needsStarch: false },
+        { name: "J6 KOTA", price: 38, category: "KOTA", needsStarch: false },
+        { name: "J7 KOTA", price: 40, category: "KOTA", needsStarch: false },
+        { name: "J8 KOTA", price: 42, category: "KOTA", needsStarch: false },
+        { name: "J9 KOTA", price: 45, category: "KOTA", needsStarch: false },
+        { name: "J Tower", price: 100, category: "MODERN", needsStarch: false },
+        { name: "J King", price: 75, category: "MODERN", needsStarch: false },
+        { name: "J Queen", price: 115, category: "MODERN", needsStarch: false },
+        { name: "J Prince", price: 95, category: "MODERN", needsStarch: false },
+        { name: "J Princess", price: 55, category: "MODERN", needsStarch: false },
+        { name: "Quarter Chicken", price: 30, category: "CHICKEN", needsStarch: false },
+        { name: "Half Chicken", price: 60, category: "CHICKEN", needsStarch: false },
+        { name: "Full Chicken", price: 100, category: "CHICKEN", needsStarch: false },
+        { name: "Qtr+Chps+Toast", price: 45, category: "MEAL", needsStarch: false },
+        { name: "Qtr+Chps+Salad", price: 70, category: "MEAL", needsStarch: false },
+        { name: "Half+Chps+Toast", price: 70, category: "MEAL", needsStarch: false },
+        { name: "Platter Ribs", price: 105, category: "PLATTER", needsStarch: false },
+        { name: "Platter Steak", price: 95, category: "PLATTER", needsStarch: false },
+        { name: "12 Wings", price: 70, category: "WINGS", needsStarch: false },
+        { name: "12Wings+Chips", price: 85, category: "WINGS", needsStarch: false },
+        { name: "6Wings+Chips", price: 45, category: "WINGS", needsStarch: false },
+        { name: "Steak+Chips", price: 75, category: "GRILL", needsStarch: false },
+        { name: "Mini J Ribs", price: 85, category: "RIBS", needsStarch: false },
+        { name: "J Spare Ribs", price: 155, category: "RIBS", needsStarch: false },
+        // PAP & RICE items - these need starch selection
+        { name: "Pap & Steak", price: 55, category: "PAP & RICE", needsStarch: true, baseName: "Pap & Steak" },
+        { name: "Rice & Steak", price: 55, category: "PAP & RICE", needsStarch: true, baseName: "Rice & Steak" },
+        { name: "Pap & Chicken", price: 45, category: "PAP & RICE", needsStarch: true, baseName: "Pap & Chicken" },
+        { name: "Rice & Chicken", price: 45, category: "PAP & RICE", needsStarch: true, baseName: "Rice & Chicken" },
+        { name: "Pap & Half Chicken", price: 95, category: "PAP & RICE", needsStarch: true, baseName: "Pap & Half Chicken" },
+        { name: "Rice & Half Chicken", price: 95, category: "PAP & RICE", needsStarch: true, baseName: "Rice & Half Chicken" },
+        { name: "Pap & Full Chicken", price: 145, category: "PAP & RICE", needsStarch: true, baseName: "Pap & Full Chicken" },
+        { name: "Rice & Full Chicken", price: 145, category: "PAP & RICE", needsStarch: true, baseName: "Rice & Full Chicken" },
+        { name: "Dagwood", price: 47, category: "DAGWOOD", needsStarch: false },
+        { name: "Dag Deluxe", price: 85, category: "DAGWOOD", needsStarch: false },
+        { name: "Small Chips", price: 25, category: "CHIPS", needsStarch: false },
+        { name: "Medium Chips", price: 40, category: "CHIPS", needsStarch: false },
+        { name: "Large Chips", price: 50, category: "CHIPS", needsStarch: false },
+        { name: "Green Salad", price: 35, category: "SALAD", needsStarch: false },
+        { name: "Potato Salad", price: 25, category: "SALAD", needsStarch: false },
+        { name: "Chakalaka", price: 20, category: "SALAD", needsStarch: false },
+        { name: "Extra Egg", price: 4, category: "EXTRA", needsStarch: false },
+        { name: "Extra Russian", price: 20, category: "EXTRA", needsStarch: false },
+        { name: "Extra Cheese", price: 3, category: "EXTRA", needsStarch: false }
     ];
 
     let selectedBranch = null;
-    let cart = {};
+    let cart = {}; // stores { name, price, quantity, starchChoice? }
+
+    // Track starch selection per item (for UI)
+    let starchSelections = {};
 
     function renderStats() {
         const statsDiv = document.getElementById("statsGrid");
@@ -834,21 +863,65 @@
         orderMenuItems.forEach(item => {
             const card = document.createElement("div");
             card.className = "menu-item-card";
+            let starchSelectorHtml = '';
+            if (item.needsStarch) {
+                // For items that need starch, we show Pap/Rice selector
+                const savedChoice = starchSelections[item.name] || 'Pap';
+                starchSelectorHtml = `
+                    <div class="starch-selector">
+                        <button class="starch-option ${savedChoice === 'Pap' ? 'selected' : ''}" data-item="${item.name}" data-starch="Pap">Pap</button>
+                        <button class="starch-option ${savedChoice === 'Rice' ? 'selected' : ''}" data-item="${item.name}" data-starch="Rice">Rice</button>
+                    </div>
+                    <div class="item-starch-note">✓ ${savedChoice} selected</div>
+                `;
+            }
             card.innerHTML = `
                 <div class="item-info">
                     <h4>${item.name}</h4>
                     <div class="item-price">R${item.price}</div>
                     <span class="item-category">${item.category}</span>
                 </div>
-                <button class="add-to-cart" data-name="${item.name.replace(/'/g, "&quot;")}" data-price="${item.price}">Add</button>
+                ${starchSelectorHtml}
+                <button class="add-to-cart" data-name="${item.name.replace(/'/g, "&quot;")}" data-price="${item.price}" data-needs-starch="${item.needsStarch}">Add to cart</button>
             `;
             container.appendChild(card);
         });
+        
+        // Attach starch selector listeners
+        document.querySelectorAll('.starch-option').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const itemName = btn.getAttribute('data-item');
+                const starchType = btn.getAttribute('data-starch');
+                starchSelections[itemName] = starchType;
+                // Update UI for this item's starch options
+                const parentCard = btn.closest('.menu-item-card');
+                if (parentCard) {
+                    parentCard.querySelectorAll('.starch-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    btn.classList.add('selected');
+                    const noteDiv = parentCard.querySelector('.item-starch-note');
+                    if (noteDiv) noteDiv.innerHTML = `✓ ${starchType} selected`;
+                }
+            });
+        });
+        
+        // Attach add to cart listeners
         document.querySelectorAll(".add-to-cart").forEach(btn => {
             btn.addEventListener("click", () => {
                 const name = btn.getAttribute("data-name");
                 const price = parseFloat(btn.getAttribute("data-price"));
-                addToCart({ name, price });
+                const needsStarch = btn.getAttribute("data-needs-starch") === 'true';
+                let finalName = name;
+                if (needsStarch) {
+                    const selectedStarch = starchSelections[name] || 'Pap';
+                    finalName = `${selectedStarch} & ${name.replace(/^(Pap|Rice) & /, '')}`;
+                    if (!name.startsWith('Pap') && !name.startsWith('Rice')) {
+                        finalName = `${selectedStarch} ${name}`;
+                    }
+                }
+                addToCart({ name: finalName, price, originalName: name, needsStarch, starchChoice: starchSelections[name] });
             });
         });
     }
@@ -893,7 +966,12 @@
     function sendWhatsApp() {
         if(!validateOrder()) return;
         let itemsList = "", total = 0;
-        for(let key in cart) { const item = cart[key]; const subtotal = item.price * item.quantity; total += subtotal; itemsList += `- ${item.name} x ${item.quantity} = R${subtotal}\n`; }
+        for(let key in cart) { 
+            const item = cart[key]; 
+            const subtotal = item.price * item.quantity; 
+            total += subtotal; 
+            itemsList += `- ${item.name} x ${item.quantity} = R${subtotal}\n`;
+        }
         const msg = encodeURIComponent(`🍔 KWA JERRY ORDER 🍟\n📍 ${selectedBranch.name}\n🏠 ${selectedBranch.address}\n\n📋 ORDER:\n${itemsList}\n💰 TOTAL: R${total.toFixed(2)}\n\n🙏 Thank you for choosing Kwa Jerry!`);
         let phone = selectedBranch.whatsapp.replace(/\D/g, '');
         if(phone.length === 10 && phone.startsWith('0')) phone = '27' + phone.substring(1);
