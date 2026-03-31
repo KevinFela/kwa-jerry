@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Kwa Jerry Fast Food</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="shortcut icon" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
+    <!-- Favicon - emoji-based + data URI fallback for full compatibility -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23990000'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3E🍔%3C/text%3E%3C/svg%3E">
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23990000'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3E🍔%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23990000'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='white' font-family='Arial'%3E🍔%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -37,7 +38,7 @@
         /* Header - Mobile Optimized */
         header {
             background: #000000;
-            padding: 0.7rem 1rem;
+            padding: 0.6rem 1rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -56,8 +57,8 @@
             flex: 1;
         }
         .logo-img {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             background: #990000;
             border-radius: 50%;
             display: flex;
@@ -74,32 +75,32 @@
             object-fit: cover;
         }
         .logo h1 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 800;
             color: #FFFFFF;
             line-height: 1.2;
         }
         .logo p {
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             color: #F2F2F2;
         }
         .branch-badge {
             background: #990000;
-            padding: 0.3rem 0.8rem;
+            padding: 0.25rem 0.7rem;
             border-radius: 30px;
             color: white;
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             white-space: nowrap;
         }
 
-        /* Navigation - Scrollable on mobile */
+        /* Navigation */
         nav {
             background: #1a1a1a;
-            padding: 0.6rem 1rem;
+            padding: 0.5rem 1rem;
             display: flex;
             flex-wrap: nowrap;
-            gap: 0.4rem;
+            gap: 0.3rem;
             justify-content: center;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -112,10 +113,10 @@
         .nav-btn {
             background: transparent;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.9rem;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #F2F2F2;
             cursor: pointer;
             border-radius: 30px;
@@ -130,8 +131,8 @@
         /* Hero Section */
         .hero-section {
             position: relative;
-            height: 50vh;
-            min-height: 320px;
+            height: 45vh;
+            min-height: 280px;
             background-image: url('hero.JPG');
             background-size: cover;
             background-position: center;
@@ -153,42 +154,42 @@
             position: relative;
             z-index: 2;
             color: white;
-            padding: 1.5rem;
+            padding: 1rem;
         }
         .hero-content h2 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             letter-spacing: 2px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         .hero-content p {
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
         .hero {
             text-align: center;
-            padding: 1.8rem 1rem;
+            padding: 1.2rem 1rem;
             background: linear-gradient(135deg, #F2F2F2, #fff);
         }
         .hero h2 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #000;
             border-bottom: 3px solid #990000;
             display: inline-block;
-            padding-bottom: 6px;
+            padding-bottom: 5px;
         }
         .hero p {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: #555;
-            margin-top: 0.6rem;
+            margin-top: 0.5rem;
         }
 
         .container {
             max-width: 100%;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 0.8rem;
         }
 
         .page {
@@ -199,31 +200,31 @@
             display: block;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            border-left: 5px solid #990000;
-            padding-left: 12px;
-            margin-bottom: 1rem;
+            border-left: 4px solid #990000;
+            padding-left: 10px;
+            margin-bottom: 0.8rem;
             color: #000;
         }
 
         .branch-grid, .stats-grid, .contact-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.8rem;
+            gap: 0.6rem;
         }
         
         .branch-card {
             background: white;
-            border-radius: 16px;
-            padding: 0.8rem 0.5rem;
+            border-radius: 14px;
+            padding: 0.6rem 0.3rem;
             text-align: center;
-            border: 2px solid #e0e0e0;
+            border: 1.5px solid #e0e0e0;
             transition: all 0.2s;
         }
         .branch-card.selected {
@@ -231,25 +232,25 @@
             background: #fff5f5;
         }
         .branch-card i {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             color: #990000;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
         .branch-card h3 {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             margin-bottom: 0.2rem;
             font-weight: 700;
         }
         .branch-address {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: #666;
-            margin: 0.3rem 0;
+            margin: 0.2rem 0;
             line-height: 1.2;
         }
         .branch-whatsapp {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             background: #f0f0f0;
-            padding: 2px 6px;
+            padding: 2px 5px;
             border-radius: 20px;
             display: inline-block;
         }
@@ -257,38 +258,38 @@
         .stat-card {
             background: white;
             text-align: center;
-            padding: 0.8rem 0.3rem;
-            border-radius: 16px;
+            padding: 0.6rem 0.2rem;
+            border-radius: 14px;
         }
         .stat-number {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: #990000;
         }
         .stat-card div:last-child {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
         .contact-card {
             background: white;
-            border-radius: 16px;
-            padding: 0.8rem 0.5rem;
+            border-radius: 14px;
+            padding: 0.6rem 0.3rem;
             text-align: center;
         }
         .contact-card h3 {
-            font-size: 0.75rem;
-            margin-bottom: 0.3rem;
+            font-size: 0.7rem;
+            margin-bottom: 0.2rem;
             color: #990000;
         }
         .contact-detail {
             display: flex;
             align-items: center;
-            gap: 5px;
-            margin: 0.4rem 0;
-            padding: 4px;
+            gap: 4px;
+            margin: 0.3rem 0;
+            padding: 3px;
             background: #f5f5f5;
-            border-radius: 10px;
-            font-size: 0.6rem;
+            border-radius: 8px;
+            font-size: 0.55rem;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -296,39 +297,38 @@
             background: #990000;
             color: white;
             border: none;
-            padding: 0.25rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.6rem;
-            margin-top: 0.3rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 18px;
+            font-size: 0.55rem;
+            margin-top: 0.2rem;
             cursor: pointer;
         }
 
+        /* Gallery - keep scrollable */
         .gallery-scroll-container {
             overflow-x: auto;
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x mandatory;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
         }
         .gallery-scroll {
             display: flex;
             flex-direction: row;
-            gap: 1rem;
-            padding: 0.5rem 0.2rem;
+            gap: 0.8rem;
+            padding: 0.3rem 0.1rem;
         }
         .gallery-item {
-            flex: 0 0 85%;
+            flex: 0 0 80%;
             scroll-snap-align: start;
             background: white;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-
         .gallery-item-img {
             width: 100%;
-            aspect-ratio: 1 / 1.414;
+            aspect-ratio: 1 / 1.2;
             background: #2c2c2c;
             display: flex;
             align-items: center;
@@ -342,192 +342,184 @@
             display: block;
         }
         .gallery-item-info {
-            padding: 0.8rem;
+            padding: 0.5rem;
             text-align: center;
         }
         .gallery-item-info h3 {
-            font-size: 1rem;
+            font-size: 0.8rem;
             color: #990000;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.1rem;
         }
         .gallery-item-info p {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             color: #666;
         }
         
         @media (min-width: 600px) {
-            .gallery-item {
-                flex: 0 0 70%;
-            }
-        }
-        @media (min-width: 900px) {
-            .gallery-item {
-                flex: 0 0 45%;
-            }
+            .gallery-item { flex: 0 0 60%; }
         }
 
-        /* MENU GRID - FIXED FOR MOBILE: SINGLE COLUMN SO ALL ITEMS VISIBLE WITHOUT SWIPING */
+        /* MENU GRID - 3 COLUMNS LIKE INSTAGRAM (compact) */
         .menu-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 0.7rem;
-            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
+            margin-top: 0.8rem;
         }
         .menu-item-card {
             background: white;
-            border-radius: 16px;
-            padding: 0.9rem 1rem;
+            border-radius: 14px;
+            padding: 0.5rem 0.3rem;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            text-align: left;
+            text-align: center;
             border: 1px solid #eaeaea;
             transition: all 0.2s;
-            gap: 0.8rem;
-            flex-wrap: wrap;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .menu-item-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .item-info {
-            flex: 2;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .item-info h4 {
-            font-size: 0.85rem;
+            font-size: 0.65rem;
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 1.2;
+            max-width: 100%;
+            word-break: break-word;
         }
         .item-price {
             color: #990000;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             margin: 0.2rem 0;
         }
         .item-category {
-            font-size: 0.6rem;
+            font-size: 0.5rem;
             color: #888;
             display: inline-block;
             background: #f0f0f0;
-            padding: 2px 8px;
-            border-radius: 20px;
-            margin-top: 4px;
+            padding: 1px 5px;
+            border-radius: 12px;
+            margin-top: 2px;
         }
         .add-to-cart {
             background: #000;
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
+            padding: 0.25rem 0.5rem;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 0.7rem;
-            font-weight: 600;
-            min-width: 80px;
+            font-size: 0.6rem;
+            margin-top: 0.4rem;
+            width: 85%;
+            font-weight: 500;
             transition: background 0.2s;
-            flex-shrink: 0;
         }
         .add-to-cart:hover {
             background: #990000;
         }
 
-        /* Cart Panel */
+        /* Cart Panel - compact */
         .cart-panel {
             background: white;
-            border-radius: 24px;
-            padding: 1rem;
-            margin-top: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            padding: 0.8rem;
+            margin-top: 1.2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
             position: sticky;
             bottom: 0;
         }
         .cart-panel h3 {
-            font-size: 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
         }
         .cart-items-list {
-            max-height: 180px;
+            max-height: 150px;
             overflow-y: auto;
+            font-size: 0.7rem;
         }
         .cart-item-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 0;
+            padding: 5px 0;
             border-bottom: 1px solid #eee;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             flex-wrap: wrap;
             gap: 0.2rem;
         }
         .whatsapp-order-btn {
             background: #25D366;
             border: none;
-            padding: 10px 18px;
-            border-radius: 50px;
+            padding: 7px 14px;
+            border-radius: 40px;
             font-weight: bold;
             color: white;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
         }
         #clearCartBtn {
             background: #333;
-            padding: 8px 16px;
+            padding: 5px 12px;
             border-radius: 30px;
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
         }
 
-        /* Contact Form */
+        /* Contact Form compact */
         .contact-form-container {
             background: white;
-            border-radius: 24px;
-            padding: 1.2rem;
-            margin-top: 1.5rem;
+            border-radius: 20px;
+            padding: 1rem;
+            margin-top: 1.2rem;
         }
         .form-group {
-            margin-bottom: 0.9rem;
+            margin-bottom: 0.7rem;
         }
         .form-group label {
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             margin-bottom: 0.2rem;
             display: block;
         }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 10px 14px;
+            padding: 6px 10px;
             border: 1px solid #ddd;
-            border-radius: 14px;
+            border-radius: 12px;
             font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
         }
         .submit-contact {
             background: #990000;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 8px 16px;
             border-radius: 40px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         footer {
             text-align: center;
-            padding: 1.2rem;
+            padding: 1rem;
             background: #000;
             color: #F2F2F2;
-            margin-top: 1.5rem;
-            font-size: 0.7rem;
+            margin-top: 1.2rem;
+            font-size: 0.6rem;
         }
         .developer-credit {
-            margin-top: 0.5rem;
-            font-size: 0.6rem;
+            margin-top: 0.3rem;
+            font-size: 0.55rem;
             opacity: 0.7;
         }
         .developer-credit a {
@@ -535,7 +527,52 @@
             text-decoration: none;
         }
 
-        /* Modal */
+        /* Responsive: on very small screens keep 3 columns but shrink further */
+        @media (max-width: 450px) {
+            .menu-grid {
+                gap: 0.4rem;
+            }
+            .menu-item-card {
+                padding: 0.4rem 0.2rem;
+            }
+            .item-info h4 {
+                font-size: 0.6rem;
+            }
+            .item-price {
+                font-size: 0.65rem;
+            }
+            .add-to-cart {
+                font-size: 0.55rem;
+                padding: 0.2rem 0.4rem;
+                width: 90%;
+            }
+            .branch-grid, .stats-grid, .contact-grid {
+                gap: 0.5rem;
+            }
+            .branch-card h3 {
+                font-size: 0.65rem;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .menu-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .item-info h4 {
+                font-size: 0.55rem;
+            }
+        }
+        
+        .order-branch-section {
+            margin-bottom: 1rem;
+        }
+        .warning-text {
+            color: #990000;
+            font-size: 0.65rem;
+            margin-top: 0.3rem;
+        }
+        
+        /* Modal minimal */
         .modal {
             display: none;
             position: fixed;
@@ -545,76 +582,19 @@
             height: 100%;
             background: rgba(0,0,0,0.85);
             z-index: 1000;
-            overflow-y: auto;
         }
         .modal-content {
             background: white;
             max-width: 90%;
-            margin: 30px auto;
-            border-radius: 28px;
-            padding: 1.2rem;
+            margin: 20px auto;
+            border-radius: 24px;
+            padding: 1rem;
         }
         .close-modal {
             float: right;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             cursor: pointer;
             color: #990000;
-        }
-
-        @media (max-width: 550px) {
-            .menu-item-card {
-                flex-direction: column;
-                align-items: flex-start;
-                text-align: left;
-            }
-            .add-to-cart {
-                width: 100%;
-                margin-top: 0.3rem;
-            }
-            .branch-grid, .stats-grid, .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.6rem;
-            }
-            .branch-card h3 {
-                font-size: 0.7rem;
-            }
-            .branch-address {
-                font-size: 0.55rem;
-            }
-            .stat-number {
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .menu-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-            .menu-item-card {
-                flex-direction: row;
-                align-items: center;
-                padding: 0.8rem;
-            }
-            .add-to-cart {
-                width: auto;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .menu-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        .order-branch-section {
-            margin-bottom: 1.5rem;
-        }
-        .warning-text {
-            color: #990000;
-            font-size: 0.7rem;
-            margin-top: 0.3rem;
         }
     </style>
 </head>
@@ -623,7 +603,7 @@
 <header>
     <div class="logo-container">
         <div class="logo-img">
-            <img src="logo.png" alt="Kwa Jerry Logo" onerror="this.src='logo.png'">
+            <img src="logo.png" alt="Kwa Jerry Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23990000\'/%3E%3Ctext x=\'50\' y=\'70\' font-size=\'50\' text-anchor=\'middle\' fill=\'white\'%3E🍔%3C/text%3E%3C/svg%3E'">
         </div>
         <div class="logo">
             <h1>KWA JERRY</h1>
@@ -654,7 +634,7 @@
     <div class="container">
         <div class="section-title"><i class="fas fa-location-dot"></i> Our Branches</div>
         <div class="branch-grid" id="homeBranchGrid"></div>
-        <div style="margin-top: 2rem;">
+        <div style="margin-top: 1.5rem;">
             <div class="section-title"><i class="fas fa-star"></i> Why Choose Us?</div>
             <div class="stats-grid" id="statsGrid"></div>
         </div>
@@ -664,12 +644,11 @@
 <div id="menu-page" class="page">
     <div class="hero">
         <h2>Our Menu Gallery</h2>
-        <p>Swipe to explore our delicious offerings</p>
+        <p>Swipe to explore</p>
     </div>
     <div class="container">
         <div class="gallery-scroll-container">
-            <div class="gallery-scroll" id="menuGalleryScroll">
-            </div>
+            <div class="gallery-scroll" id="menuGalleryScroll"></div>
         </div>
     </div>
 </div>
@@ -677,25 +656,25 @@
 <div id="order-page" class="page">
     <div class="hero">
         <h2>Order Online</h2>
-        <p>Select branch, add items • WhatsApp order</p>
+        <p>Select branch • Add items</p>
     </div>
     <div class="container">
         <div class="order-branch-section">
-            <div class="section-title"><i class="fas fa-store"></i> Select Collection Branch</div>
+            <div class="section-title"><i class="fas fa-store"></i> Select Branch</div>
             <div class="branch-grid" id="orderBranchGrid"></div>
         </div>
-        <div class="section-title"><i class="fas fa-utensils"></i> Full Menu - Kwa Jerry Fast Food</div>
+        <div class="section-title"><i class="fas fa-utensils"></i> Full Menu</div>
         <div id="orderMenuGrid" class="menu-grid"></div>
         
         <div class="cart-panel" id="cartPanel">
             <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
-            <div id="cartItemsList" class="cart-items-list">Cart is empty</div>
-            <div id="cartTotal" style="font-weight:800; font-size:1.2rem; margin:0.6rem 0;">Total: R0.00</div>
-            <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center;">
+            <div id="cartItemsList" class="cart-items-list">Cart empty</div>
+            <div id="cartTotal" style="font-weight:800; font-size:1rem; margin:0.4rem 0;">Total: R0.00</div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
                 <button class="whatsapp-order-btn" id="whatsappOrderBtn"><i class="fab fa-whatsapp"></i> Order via WhatsApp</button>
                 <button id="clearCartBtn">Clear Cart</button>
             </div>
-            <div id="orderWarning" style="color:#990000; font-size:0.7rem; margin-top:8px;"></div>
+            <div id="orderWarning" style="color:#990000; font-size:0.6rem; margin-top:6px;"></div>
         </div>
     </div>
 </div>
@@ -704,21 +683,20 @@
 <div id="about-page" class="page">
     <div class="hero">
         <h2>Our Story</h2>
-        <p>Serving quality fast food since 2006</p>
+        <p>Serving since 2006</p>
     </div>
     <div class="container">
-        <div style="background:white; border-radius:28px; padding:1.5rem;">
-            <h3 style="color:#990000;">Who We Are</h3>
-            <p style="line-height:1.7; margin:0.8rem 0; font-size:0.9rem;">Kwa Jerry Fast Food started in 2006 with a simple mission: serve delicious, affordable fast food. From our humble beginnings, we've grown to three convenient locations across Gauteng, serving our satisfied customers daily.</p>
-            <h3 style="color:#990000; margin-top:1.2rem;">Our Values</h3>
-            <ul style="margin-left:1.2rem; line-height:1.7; font-size:0.9rem;">
-                <li>Fresh ingredients prepared daily</li>
+        <div style="background:white; border-radius:24px; padding:1.2rem;">
+            <h3 style="color:#990000; font-size:1rem;">Who We Are</h3>
+            <p style="line-height:1.5; margin:0.5rem 0; font-size:0.8rem;">Kwa Jerry Fast Food started in 2006 with a simple mission: serve delicious, affordable fast food. From humble beginnings, we've grown to three locations across Gauteng.</p>
+            <h3 style="color:#990000; margin-top:1rem; font-size:0.9rem;">Our Values</h3>
+            <ul style="margin-left:1rem; line-height:1.5; font-size:0.8rem;">
+                <li>Fresh ingredients daily</li>
                 <li>Fast, friendly service</li>
-                <li>Clean and welcoming environment</li>
-                <li>Community-focused business</li>
+                <li>Clean environment</li>
             </ul>
-            <h3 style="color:#990000; margin-top:1.2rem;">Opening Hours</h3>
-            <p>Monday - Sunday: 10:00 AM - 10:00 PM<br>Public Holidays: 10:00 AM - 10:00 PM</p>
+            <h3 style="color:#990000; margin-top:1rem; font-size:0.9rem;">Hours</h3>
+            <p style="font-size:0.8rem;">Mon-Sun: 10:00 AM - 10:00 PM</p>
         </div>
     </div>
 </div>
@@ -727,12 +705,12 @@
 <div id="contact-page" class="page">
     <div class="hero">
         <h2>Contact Us</h2>
-        <p>Get in touch with your nearest branch</p>
+        <p>Reach your nearest branch</p>
     </div>
     <div class="container">
         <div class="contact-grid" id="contactGrid"></div>
-        <div style="margin-top: 2rem;">
-            <div class="section-title"><i class="fas fa-envelope"></i> Send a Message</div>
+        <div style="margin-top: 1.2rem;">
+            <div class="section-title"><i class="fas fa-envelope"></i> Send Message</div>
             <div class="contact-form-container">
                 <form id="contactForm">
                     <div class="form-group">
@@ -743,9 +721,9 @@
                         <label>Branch</label>
                         <select id="contactBranch" required>
                             <option value="">Select branch</option>
-                            <option value="Big Street Branch">Big Street Branch - 2202 Phatudi Kagiso Avenue</option>
-                            <option value="Ext 12 Branch">Ext 12 Branch - 16352 Geba Street</option>
-                            <option value="Protea Glen Branch">Protea Glen Branch - 20910 Blackberry street</option>
+                            <option value="Big Street Branch">Big Street - 2202 Phatudi Kagiso Avenue</option>
+                            <option value="Ext 12 Branch">Ext 12 - 16352 Geba Street</option>
+                            <option value="Protea Glen Branch">Protea Glen - 20910 Blackberry street</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -758,7 +736,7 @@
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea id="contactMessage" rows="4" required></textarea>
+                        <textarea id="contactMessage" rows="3" required></textarea>
                     </div>
                     <button type="submit" class="submit-contact"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
                 </form>
@@ -773,7 +751,7 @@
 </footer>
 
 <script>
-    // CORRECTED BRANCH ADDRESS: Phatudi Kagiso Avenue
+    // CORRECTED BRANCHES: Phatudi Kagiso Avenue
     const branches = [
         { id: "big_street", name: "Big Street", address: "2202 Phatudi Kagiso Avenue", whatsapp: "0733963205" },
         { id: "ext12", name: "Ext 12", address: "16352 Geba Street Kagiso", whatsapp: "0698106598" },
@@ -781,40 +759,28 @@
     ];
 
     const menuGalleryImages = [
-        { url: "kotas.png", title: "KOTA & MODERN J KOTAS", desc: "Kwa Jerry Kotas" },
-        { url: "platters.png", title: "PLATTERS", desc: "Kwa Jerry Platters" },
-        { url: "Chicken.png", title: "CHICKEN & SALADS", desc: "Kwa jerry chicken meals" },
-        { url: "ribs.png", title: "MEALS / RIBS & SALADS", desc: "Kwa jerry meals, ribs & salads" },
-        { url: "chips.png", title: "CHIPS & DAGWOODS", desc: "Kwa jerry dagwoods" }
+        { url: "kotas.png", title: "KOTA & MODERN J", desc: "Kwa Jerry Kotas" },
+        { url: "platters.png", title: "PLATTERS", desc: "Delicious platters" },
+        { url: "Chicken.png", title: "CHICKEN & SALADS", desc: "Chicken meals" },
+        { url: "ribs.png", title: "RIBS & MEALS", desc: "Tasty ribs" },
+        { url: "chips.png", title: "CHIPS & DAGWOODS", desc: "Crispy chips" }
     ];
 
     const orderMenuItems = [
-        { name: "J2 KOTA (+ Cheese)", price: 30, category: "KOTAS" }, { name: "J3 KOTA (+ Vienna)", price: 33, category: "KOTAS" }, { name: "J4 KOTA (+ Vienna & Cheese)", price: 35, category: "KOTAS" },
-        { name: "J5 KOTA (+ Russian)", price: 37, category: "KOTAS" }, { name: "J6 KOTA (+ Burger & Cheese)", price: 38, category: "KOTAS" }, { name: "J7 KOTA (+ Russian & Cheese)", price: 40, category: "KOTAS" },
-        { name: "J8 KOTA (+ Russian & Vienna)", price: 42, category: "KOTAS" }, { name: "J9 KOTA (Russian+Vienna+Cheese)", price: 45, category: "KOTAS" },
-        { name: "J Tower (Burger+Russian+Steak+Ribs+Eggs)", price: 100, category: "MODERN KOTAS" }, { name: "J King (Burger+Russian+Ribs+Eggs)", price: 75, category: "MODERN KOTAS" },
-        { name: "J Queen (Russian+Cheese+Burger+4Wings+Wors)", price: 115, category: "MODERN KOTAS" }, { name: "J Prince (Russian+Cheese+Burger+4Wings)", price: 95, category: "MODERN KOTAS" },
-        { name: "J Princess (Burger+Cheese+Russian+Vienna)", price: 55, category: "MODERN KOTAS" },
-        { name: "Quarter Chicken Only", price: 30, category: "CHICKEN" }, { name: "Half Chicken Only", price: 60, category: "CHICKEN" }, { name: "Full Chicken Only", price: 100, category: "CHICKEN" },
-        { name: "Quarter Chicken + Chips + Toast", price: 45, category: "CHICKEN MEALS" }, { name: "Quarter Chicken + Chips + Toast + Salad", price: 70, category: "CHICKEN MEALS" },
-        { name: "Quarter Chicken + Salad + Toast", price: 55, category: "CHICKEN MEALS" }, { name: "Half Chicken + Chips + Toast + Salad", price: 95, category: "CHICKEN MEALS" },
-        { name: "Half Chicken + Chips + Toast", price: 70, category: "CHICKEN MEALS" }, { name: "Full Chicken + Small Chips", price: 120, category: "CHICKEN MEALS" },
-        { name: "Platter 1: Ribs + 2 Wings + Wors", price: 105, category: "PLATTERS" }, { name: "Platter: Chicken Kibab + 2 Wings + Wors", price: 85, category: "PLATTERS" },
-        { name: "Platter: Steak + Wing + Wors", price: 95, category: "PLATTERS" }, { name: "Platter for Two: Steak + Quarter Chicken", price: 110, category: "PLATTERS" },
-        { name: "Platter for Two: Ribs + Steak", price: 140, category: "PLATTERS" }, { name: "Platter for Three: Steak+Quarter+Wors+Kibab", price: 190, category: "PLATTERS" },
-        { name: "12 Wings", price: 70, category: "SPECIALITY" }, { name: "12 Wings + Chips", price: 85, category: "SPECIALITY" }, { name: "6 Wings + Chips", price: 45, category: "SPECIALITY" },
-        { name: "Steak + Chips + Wors", price: 75, category: "SPECIALITY" }, { name: "Mini J Ribs (200g + 2 Wings + Chips+Salad)", price: 85, category: "RIBS" },
-        { name: "J Spare Ribs (400g + 4 Wings + Chips+Salad)", price: 155, category: "RIBS" },
-        { name: "Pap/Rice + Steak (2 Salads)", price: 55, category: "PAP & RICE" }, { name: "Pap/Rice + Chicken (2 Salads)", price: 45, category: "PAP & RICE" },
-        { name: "Pap + Half Chicken (2 Salads)", price: 95, category: "PAP & RICE" }, { name: "Pap + Full Chicken (2 Salads)", price: 145, category: "PAP & RICE" },
-        { name: "Dagwood (Chips+Burg+Lettuce+Cheese+Egg)", price: 47, category: "DAGWOODS" }, { name: "Dagwood (Chips+Lettuce+Cheese+Egg+Rib)", price: 52, category: "DAGWOODS" },
-        { name: "Dagwood Deluxe (Chips+Burger+Rib+Tomato+Egg)", price: 85, category: "DAGWOODS" }, { name: "Small Chips", price: 25, category: "CHIPS" },
-        { name: "Medium Chips", price: 40, category: "CHIPS" }, { name: "Large Chips", price: 50, category: "CHIPS" },
-        { name: "Green Salad", price: 35, category: "SALADS" }, { name: "Green Salad + Chicken Fillets", price: 55, category: "SALADS" },
-        { name: "Potato Salad", price: 25, category: "SALADS" }, { name: "Chakalaka", price: 20, category: "SALADS" },
-        { name: "Extra: Egg", price: 4, category: "EXTRAS" }, { name: "Extra: Boneless Rib", price: 20, category: "EXTRAS" },
-        { name: "Extra: Burger Patty", price: 15, category: "EXTRAS" }, { name: "Extra: Russian", price: 20, category: "EXTRAS" },
-        { name: "Extra: Vienna", price: 10, category: "EXTRAS" }, { name: "Extra: Cheese Slice", price: 3, category: "EXTRAS" }
+        { name: "J2 KOTA", price: 30, category: "KOTA" }, { name: "J3 KOTA", price: 33, category: "KOTA" }, { name: "J4 KOTA", price: 35, category: "KOTA" },
+        { name: "J5 KOTA", price: 37, category: "KOTA" }, { name: "J6 KOTA", price: 38, category: "KOTA" }, { name: "J7 KOTA", price: 40, category: "KOTA" },
+        { name: "J8 KOTA", price: 42, category: "KOTA" }, { name: "J9 KOTA", price: 45, category: "KOTA" }, { name: "J Tower", price: 100, category: "MODERN" },
+        { name: "J King", price: 75, category: "MODERN" }, { name: "J Queen", price: 115, category: "MODERN" }, { name: "J Prince", price: 95, category: "MODERN" },
+        { name: "J Princess", price: 55, category: "MODERN" }, { name: "Quarter Chick", price: 30, category: "CHICKEN" }, { name: "Half Chick", price: 60, category: "CHICKEN" },
+        { name: "Full Chick", price: 100, category: "CHICKEN" }, { name: "Qtr+Chps+Toast", price: 45, category: "MEAL" }, { name: "Qtr+Chps+Salad", price: 70, category: "MEAL" },
+        { name: "Half+Chps+Toast", price: 70, category: "MEAL" }, { name: "Platter Ribs", price: 105, category: "PLATTER" }, { name: "Platter Steak", price: 95, category: "PLATTER" },
+        { name: "12 Wings", price: 70, category: "WINGS" }, { name: "12Wings+Chips", price: 85, category: "WINGS" }, { name: "6Wings+Chips", price: 45, category: "WINGS" },
+        { name: "Steak+Chips", price: 75, category: "GRILL" }, { name: "Mini J Ribs", price: 85, category: "RIBS" }, { name: "J Spare Ribs", price: 155, category: "RIBS" },
+        { name: "Pap+Steak", price: 55, category: "PAP" }, { name: "Pap+Chicken", price: 45, category: "PAP" }, { name: "Dagwood", price: 47, category: "DAGWOOD" },
+        { name: "Dag Deluxe", price: 85, category: "DAGWOOD" }, { name: "Small Chips", price: 25, category: "CHIPS" }, { name: "Medium Chips", price: 40, category: "CHIPS" },
+        { name: "Large Chips", price: 50, category: "CHIPS" }, { name: "Green Salad", price: 35, category: "SALAD" }, { name: "Potato Salad", price: 25, category: "SALAD" },
+        { name: "Chakalaka", price: 20, category: "SALAD" }, { name: "Extra Egg", price: 4, category: "EXTRA" }, { name: "Extra Russian", price: 20, category: "EXTRA" },
+        { name: "Extra Cheese", price: 3, category: "EXTRA" }
     ];
 
     let selectedBranch = null;
@@ -822,7 +788,7 @@
 
     function renderStats() {
         const statsDiv = document.getElementById("statsGrid");
-        if(statsDiv) statsDiv.innerHTML = `<div class="stat-card"><div class="stat-number">20+</div><div>Years</div></div><div class="stat-card"><div class="stat-number">3</div><div>Branches</div></div><div class="stat-card"><div class="stat-number">80+</div><div>Items</div></div>`;
+        if(statsDiv) statsDiv.innerHTML = `<div class="stat-card"><div class="stat-number">20+</div><div>Years</div></div><div class="stat-card"><div class="stat-number">3</div><div>Branches</div></div><div class="stat-card"><div class="stat-number">70+</div><div>Items</div></div>`;
     }
 
     function renderBranches(containerId, isSelectable = true) {
@@ -874,7 +840,7 @@
                     <div class="item-price">R${item.price}</div>
                     <span class="item-category">${item.category}</span>
                 </div>
-                <button class="add-to-cart" data-name="${item.name.replace(/'/g, "&quot;")}" data-price="${item.price}">Add to cart</button>
+                <button class="add-to-cart" data-name="${item.name.replace(/'/g, "&quot;")}" data-price="${item.price}">Add</button>
             `;
             container.appendChild(card);
         });
@@ -904,13 +870,13 @@
         const cartContainer = document.getElementById("cartItemsList");
         const totalSpan = document.getElementById("cartTotal");
         if(!cartContainer) return;
-        if(Object.keys(cart).length === 0) { cartContainer.innerHTML = "<div style='text-align:center; padding:0.6rem;'>Cart empty</div>"; totalSpan.innerText = "Total: R0.00"; return; }
+        if(Object.keys(cart).length === 0) { cartContainer.innerHTML = "<div style='text-align:center; padding:0.3rem;'>Empty</div>"; totalSpan.innerText = "Total: R0.00"; return; }
         let total = 0, html = "";
         for(let key in cart) {
             const item = cart[key];
             const subtotal = item.price * item.quantity;
             total += subtotal;
-            html += `<div class="cart-item-row"><div><strong>${item.name}</strong> x${item.quantity}<br><span style="font-size:0.6rem;">R${item.price} each</span></div><div><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', -1)" style="background:#eee; border:none; width:28px; border-radius:50%; cursor:pointer; font-size:1rem;">-</button><span style="margin:0 8px; font-weight:600;">${item.quantity}</span><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', 1)" style="background:#eee; border:none; width:28px; border-radius:50%; cursor:pointer; font-size:1rem;">+</button><span style="margin-left:10px; font-weight:700;">R${subtotal}</span></div></div>`;
+            html += `<div class="cart-item-row"><div><strong>${item.name}</strong> x${item.quantity}</div><div><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', -1)" style="background:#eee; border:none; width:24px; border-radius:50%;">-</button><span style="margin:0 5px;">${item.quantity}</span><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', 1)" style="background:#eee; border:none; width:24px; border-radius:50%;">+</button><span style="margin-left:6px;">R${subtotal}</span></div></div>`;
         }
         cartContainer.innerHTML = html;
         totalSpan.innerText = `Total: R${total.toFixed(2)}`;
@@ -919,16 +885,16 @@
 
     function validateOrder() {
         const warning = document.getElementById("orderWarning");
-        if(!selectedBranch) { if(warning) warning.innerHTML = "⚠️ Please select a branch first"; return false; }
-        if(Object.keys(cart).length === 0) { if(warning) warning.innerHTML = "⚠️ Your cart is empty. Add some delicious items!"; return false; }
-        if(warning) warning.innerHTML = "✓ Ready to order! Click WhatsApp to send."; return true;
+        if(!selectedBranch) { if(warning) warning.innerHTML = "⚠️ Select branch first"; return false; }
+        if(Object.keys(cart).length === 0) { if(warning) warning.innerHTML = "⚠️ Cart empty"; return false; }
+        if(warning) warning.innerHTML = "✓ Ready to order!"; return true;
     }
 
     function sendWhatsApp() {
         if(!validateOrder()) return;
         let itemsList = "", total = 0;
         for(let key in cart) { const item = cart[key]; const subtotal = item.price * item.quantity; total += subtotal; itemsList += `- ${item.name} x ${item.quantity} = R${subtotal}\n`; }
-        const msg = encodeURIComponent(`🍔 KWA JERRY FAST FOOD ORDER 🍟\n\n📍 Branch: ${selectedBranch.name}\n🏠 Address: ${selectedBranch.address}\n\n📋 ORDER:\n${itemsList}\n💰 TOTAL: R${total.toFixed(2)}\n\n🙏 Thank you for choosing Kwa Jerry!`);
+        const msg = encodeURIComponent(`🍔 KWA JERRY ORDER 🍟\n📍 ${selectedBranch.name}\n🏠 ${selectedBranch.address}\n\n📋 ORDER:\n${itemsList}\n💰 TOTAL: R${total.toFixed(2)}\n\n🙏 Thank you for choosing Kwa Jerry!`);
         let phone = selectedBranch.whatsapp.replace(/\D/g, '');
         if(phone.length === 10 && phone.startsWith('0')) phone = '27' + phone.substring(1);
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
@@ -939,16 +905,16 @@
     function handleContactSubmit(e) {
         e.preventDefault();
         const name=document.getElementById("contactName").value, branch=document.getElementById("contactBranch").value, phone=document.getElementById("contactPhone").value, subject=document.getElementById("contactSubject").value, msg=document.getElementById("contactMessage").value;
-        if(!name||!branch||!phone||!subject||!msg) { alert("Please fill all fields"); return; }
+        if(!name||!branch||!phone||!subject||!msg) { alert("Fill all fields"); return; }
         const contactMsg = encodeURIComponent(`KWA JERRY CONTACT\nName: ${name}\nBranch: ${branch}\nPhone: ${phone}\nSubject: ${subject}\nMessage: ${msg}`);
         window.open(`https://wa.me/27698106598?text=${contactMsg}`, "_blank");
         document.getElementById("contactForm").reset();
-        alert("Message sent via WhatsApp");
+        alert("Sent via WhatsApp");
     }
 
     function renderContact() {
         const grid = document.getElementById("contactGrid");
-        if(grid) grid.innerHTML = branches.map(b => `<div class="contact-card"><h3>${b.name}</h3><div class="contact-detail"><i class="fas fa-map-marker-alt"></i> ${b.address}</div><div class="contact-detail"><i class="fab fa-whatsapp"></i> ${b.whatsapp}</div><div class="contact-detail"><i class="fas fa-clock"></i> 10am-10pm</div><button class="view-menu-btn-small" onclick="window.open('https://wa.me/${b.whatsapp.replace(/\D/g, '')}')"><i class="fab fa-whatsapp"></i> WhatsApp</button></div>`).join("");
+        if(grid) grid.innerHTML = branches.map(b => `<div class="contact-card"><h3>${b.name}</h3><div class="contact-detail"><i class="fas fa-map-marker-alt"></i> ${b.address}</div><div class="contact-detail"><i class="fab fa-whatsapp"></i> ${b.whatsapp}</div><button class="view-menu-btn-small" onclick="window.open('https://wa.me/${b.whatsapp.replace(/\D/g, '')}')"><i class="fab fa-whatsapp"></i> Chat</button></div>`).join("");
     }
 
     function showPage(pageId) {
