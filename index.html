@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Kwa Jerry Fast Food | Since 2006</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F2F2F2;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E0E0E0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #990000;
+            border-radius: 10px;
+        }
+
+        /* Header - Mobile Optimized */
+        header {
+            background: #000000;
+            padding: 0.7rem 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #990000;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+        .logo-img {
+            width: 44px;
+            height: 44px;
+            background: #990000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #F2F2F2;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .logo h1 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.2;
+        }
+        .logo p {
+            font-size: 0.55rem;
+            color: #F2F2F2;
+        }
+        .branch-badge {
+            background: #990000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+
+        /* Navigation - Scrollable on mobile */
+        nav {
+            background: #1a1a1a;
+            padding: 0.6rem 1rem;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 0.4rem;
+            justify-content: center;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            border-bottom: 1px solid #333;
+        }
+        nav::-webkit-scrollbar {
+            display: none;
+        }
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #F2F2F2;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: #990000;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 50vh;
+            min-height: 320px;
+            background-image: url('hero.JPG');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 1.5rem;
+        }
+        .hero-content h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        .hero-content p {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Regular Hero */
+        .hero {
+            text-align: center;
+            padding: 1.8rem 1rem;
+            background: linear-gradient(135deg, #F2F2F2, #fff);
+        }
+        .hero h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #000;
+            border-bottom: 3px solid #990000;
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+        .hero p {
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 0.6rem;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Page Transitions */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .page.active-page {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-left: 5px solid #990000;
+            padding-left: 12px;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        /* ========== 3-COLUMN GRID FOR ALL CARDS ========== */
+        .branch-grid, .stats-grid, .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+        }
+        
+        .branch-card {
+            background: white;
+            border-radius: 16px;
+            padding: 0.8rem 0.5rem;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.2s;
+        }
+        .branch-card.selected {
+            border-color: #990000;
+            background: #fff5f5;
+        }
+        .branch-card i {
+            font-size: 1.6rem;
+            color: #990000;
+            margin-bottom: 0.3rem;
+        }
+        .branch-card h3 {
+            font-size: 0.75rem;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+        .branch-address {
+            font-size: 0.6rem;
+            color: #666;
+            margin: 0.3rem 0;
+            line-height: 1.2;
+        }
+        .branch-whatsapp {
+            font-size: 0.6rem;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Stats Cards - 3 columns */
+        .stat-card {
+            background: white;
+            text-align: center;
+            padding: 0.8rem 0.3rem;
+            border-radius: 16px;
+        }
+        .stat-number {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #990000;
+        }
+        .stat-card div:last-child {
+            font-size: 0.7rem;
+        }
+
+        /* Contact Cards - 3 columns */
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 0.8rem 0.5rem;
+            text-align: center;
+        }
+        .contact-card h3 {
+            font-size: 0.75rem;
+            margin-bottom: 0.3rem;
+            color: #990000;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0.4rem 0;
+            padding: 4px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .view-menu-btn-small {
+            background: #990000;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            margin-top: 0.3rem;
+            cursor: pointer;
+        }
+
+        /* ========== MENU GALLERY - SCROLLING HORIZONTAL WITH A4 RATIO ========== */
+        .gallery-scroll-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 0.5rem;
+        }
+        .gallery-scroll {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            padding: 0.5rem 0.2rem;
+        }
+        .gallery-item {
+            flex: 0 0 85%;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        /* A4 Ratio (1:√2 ≈ 1:1.414) - height is 1.414 times width */
+        .gallery-item-img {
+            width: 100%;
+            aspect-ratio: 1 / 1.414;
+            background: #2c2c2c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .gallery-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item-info {
+            padding: 0.8rem;
+            text-align: center;
+        }
+        .gallery-item-info h3 {
+            font-size: 1rem;
+            color: #990000;
+            margin-bottom: 0.2rem;
+        }
+        .gallery-item-info p {
+            font-size: 0.7rem;
+            color: #666;
+        }
+        
+        @media (min-width: 600px) {
+            .gallery-item {
+                flex: 0 0 70%;
+            }
+        }
+        @media (min-width: 900px) {
+            .gallery-item {
+                flex: 0 0 45%;
+            }
+        }
+
+        /* ========== ORDER PAGE - 3 COLUMN GRID FOR MENU ITEMS ========== */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+        .menu-item-card {
+            background: white;
+            border-radius: 16px;
+            padding: 0.7rem 0.3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid #eaeaea;
+            transition: all 0.2s;
+        }
+        .menu-item-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .item-info h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .item-price {
+            color: #990000;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin: 0.2rem 0;
+        }
+        .item-category {
+            font-size: 0.55rem;
+            color: #888;
+            display: block;
+        }
+        .add-to-cart {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 0.35rem 0.6rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.65rem;
+            margin-top: 0.4rem;
+            width: 90%;
+            transition: background 0.2s;
+        }
+        .add-to-cart:hover {
+            background: #990000;
+        }
+
+        /* Cart Panel */
+        .cart-panel {
+            background: white;
+            border-radius: 24px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            bottom: 0;
+        }
+        .cart-panel h3 {
+            font-size: 1rem;
+        }
+        .cart-items-list {
+            max-height: 160px;
+            overflow-y: auto;
+        }
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+        }
+        .whatsapp-order-btn {
+            background: #25D366;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-weight: bold;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        #clearCartBtn {
+            background: #333;
+            padding: 6px 12px;
+            border-radius: 30px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background: white;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 0.9rem;
+        }
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+        }
+        .submit-contact {
+            background: #990000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.2rem;
+            background: #000;
+            color: #F2F2F2;
+            margin-top: 1.5rem;
+            font-size: 0.65rem;
+        }
+        .developer-credit {
+            margin-top: 0.5rem;
+            font-size: 0.6rem;
+            opacity: 0.7;
+        }
+        .developer-credit a {
+            color: #990000;
+            text-decoration: none;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content {
+            background: white;
+            max-width: 90%;
+            margin: 30px auto;
+            border-radius: 28px;
+            padding: 1.2rem;
+        }
+        .close-modal {
+            float: right;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #990000;
+        }
+        .modal-items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin-top: 1rem;
+            clear: both;
+        }
+        .modal-item {
+            background: #f9f9f9;
+            padding: 0.6rem;
+            border-radius: 14px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 480px) {
+            .branch-card h3 {
+                font-size: 0.65rem;
+            }
+            .branch-address {
+                font-size: 0.55rem;
+            }
+            .stat-number {
+                font-size: 1.2rem;
+            }
+            .menu-grid {
+                gap: 0.5rem;
+            }
+            .menu-item-card {
+                padding: 0.5rem 0.2rem;
+            }
+            .item-info h4 {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <div class="logo-img">
+            <img src="logo.png" alt="Kwa Jerry Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23990000\'/%3E%3Ctext x=\'50\' y=\'67\' font-size=\'40\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3EKJ%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="logo">
+            <h1>KWA JERRY</h1>
+            <p>Est. 2006 • Kotas • Grills</p>
+        </div>
+    </div>
+    <div class="branch-badge">
+        <i class="fas fa-store"></i> 3 Branches
+    </div>
+</header>
+
+<nav id="mainNav">
+    <button class="nav-btn active" data-page="home">Home</button>
+    <button class="nav-btn" data-page="menu">Menu Gallery</button>
+    <button class="nav-btn" data-page="order">Order Online</button>
+    <button class="nav-btn" data-page="about">About Us</button>
+    <button class="nav-btn" data-page="contact">Contact</button>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="home-page" class="page active-page">
+    <div class="hero-section">
+        <div class="hero-content">
+            <h2>WOLA WOOLA!!</h2>
+            <p>Welcome to Kwa Jerry Fast Food • Since 2006</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section-title"><i class="fas fa-location-dot"></i> Our Branches</div>
+        <div class="branch-grid" id="homeBranchGrid"></div>
+        <div style="margin-top: 2rem;">
+            <div class="section-title"><i class="fas fa-star"></i> Why Choose Us?</div>
+            <div class="stats-grid" id="statsGrid"></div>
+        </div>
+    </div>
+</div>
+
+<!-- MENU GALLERY - SCROLLING WITH A4 RATIO IMAGES -->
+<div id="menu-page" class="page">
+    <div class="hero">
+        <h2>Our Menu Gallery</h2>
+        <p>Swipe to explore our delicious offerings</p>
+    </div>
+    <div class="container">
+        <div class="gallery-scroll-container">
+            <div class="gallery-scroll" id="menuGalleryScroll">
+                <!-- Gallery images will be injected here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ORDER ONLINE - 3 COLUMN GRID -->
+<div id="order-page" class="page">
+    <div class="hero">
+        <h2>Order Online</h2>
+        <p>Select branch, add items • WhatsApp order</p>
+    </div>
+    <div class="container">
+        <div class="order-branch-section">
+            <div class="section-title"><i class="fas fa-store"></i> Select Collection Branch</div>
+            <div class="branch-grid" id="orderBranchGrid"></div>
+        </div>
+        <div class="section-title"><i class="fas fa-utensils"></i> Menu Items</div>
+        <div id="orderMenuGrid" class="menu-grid"></div>
+        
+        <div class="cart-panel" id="cartPanel">
+            <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
+            <div id="cartItemsList" class="cart-items-list">Cart is empty</div>
+            <div id="cartTotal" style="font-weight:800; font-size:1.1rem; margin:0.6rem 0;">Total: R0.00</div>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <button class="whatsapp-order-btn" id="whatsappOrderBtn"><i class="fab fa-whatsapp"></i> Order via WhatsApp</button>
+                <button id="clearCartBtn">Clear Cart</button>
+            </div>
+            <div id="orderWarning" style="color:#990000; font-size:0.65rem; margin-top:6px;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT US -->
+<div id="about-page" class="page">
+    <div class="hero">
+        <h2>Our Story</h2>
+        <p>Serving quality fast food since 2006</p>
+    </div>
+    <div class="container">
+        <div style="background:white; border-radius:28px; padding:1.5rem;">
+            <h3 style="color:#990000;">Who We Are</h3>
+            <p style="line-height:1.7; margin:0.8rem 0; font-size:0.9rem;">Kwa Jerry Fast Food started in 2006 with a simple mission: serve delicious, affordable fast food with authentic South African flavor. From our humble beginnings, we've grown to three convenient locations across Johannesburg, serving thousands of satisfied customers daily.</p>
+            <h3 style="color:#990000; margin-top:1.2rem;">Our Values</h3>
+            <ul style="margin-left:1.2rem; line-height:1.7; font-size:0.9rem;">
+                <li>Fresh ingredients prepared daily</li>
+                <li>Fast, friendly service</li>
+                <li>Clean and welcoming environment</li>
+                <li>Community-focused business</li>
+            </ul>
+            <h3 style="color:#990000; margin-top:1.2rem;">Opening Hours</h3>
+            <p>Monday - Sunday: 10:00 AM - 10:00 PM<br>Public Holidays: 10:00 AM - 8:00 PM</p>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact-page" class="page">
+    <div class="hero">
+        <h2>Contact Us</h2>
+        <p>Get in touch with your nearest branch</p>
+    </div>
+    <div class="container">
+        <div class="contact-grid" id="contactGrid"></div>
+        <div style="margin-top: 2rem;">
+            <div class="section-title"><i class="fas fa-envelope"></i> Send a Message</div>
+            <div class="contact-form-container">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Branch</label>
+                        <select id="contactBranch" required>
+                            <option value="">Select branch</option>
+                            <option value="Big Street Branch">Big Street Branch - 2202 Phatudi Kagiso</option>
+                            <option value="Ext 12 Branch">Ext 12 Branch - 16352 Geba Street</option>
+                            <option value="Protea Glen Branch">Protea Glen Branch - 20910 Blackberry street</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" id="contactPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" id="contactSubject" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="contactMessage" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-contact"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p><i class="fas fa-motorcycle"></i> Kwa Jerry Fast Food — Since 2006 • Best Kotas in Town</p>
+    <div class="developer-credit">Developed by <a href="https://factorx.co.za" target="_blank">factorx.co.za</a></div>
+</footer>
+
+<!-- MODAL for menu items -->
+<div id="menuModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modalTitle" style="color:#990000; font-size:1.2rem;">Menu Items</h2>
+        <div id="modalItemsList" class="modal-items-grid"></div>
+    </div>
+</div>
+
+<script>
+    // ========== YOUR MENU GALLERY IMAGES (A4 Ratio) ==========
+    // Paste your image URLs here - each image will display in A4 ratio (1:1.414)
+    const menuGalleryImages = [
+        { url: "kotas.png", title: "KOTA & MODERN J KOTAS", desc: "Kwa Jerry Kotas" },
+        { url: "platters.png", title: "PLATTERS", desc: "Kwa Jerry Platters" },
+        { url: "Chicken.png", title: "CHICKEN & SALADS", desc: "Kwa jerry chicken meals" },
+        { url: "ribs.png", title: "MEALS / RIBS & SALADS", desc: "Kwa jerry meals, ribs & salads" },
+        { url: "chips.png", title: "CHIPS & DAGWOODS", desc: "Kwa jerry dagwoods" }
+    ];
+    // ========================================================
+
+    // Branch Data
+    const branches = [
+        { id: "big_street", name: "Big Street", address: "2202 Phatudi Kagiso", whatsapp: "0733963205" },
+        { id: "ext12", name: "Ext 12", address: "16352 Geba Street Kagiso", whatsapp: "0698106598" },
+        { id: "protea_glen", name: "Protea Glen", address: "20910 Blackberry ext 29", whatsapp: "0633579191" }
+    ];
+
+    // Menu items for ordering (3-column)
+    const orderMenuItems = [
+        { name: "J2 KOTA", price: 30, category: "Kotas" }, { name: "J4 KOTA", price: 35, category: "Kotas" }, { name: "J6 KOTA", price: 38, category: "Kotas" },
+        { name: "J Tower", price: 100, category: "Modern" }, { name: "J King", price: 75, category: "Modern" }, { name: "Quarter Chicken", price: 30, category: "Chicken" },
+        { name: "Half Chicken", price: 60, category: "Chicken" }, { name: "Ribs Platter", price: 105, category: "Platters" }, { name: "Steak Platter", price: 95, category: "Platters" },
+        { name: "12 Wings", price: 70, category: "Specialty" }, { name: "Steak+Chips", price: 75, category: "Specialty" }, { name: "Small Chips", price: 25, category: "Sides" }
+    ];
+
+    let selectedBranch = null;
+    let cart = {};
+
+    function renderStats() {
+        const statsDiv = document.getElementById("statsGrid");
+        if(statsDiv) statsDiv.innerHTML = `<div class="stat-card"><div class="stat-number">20+</div><div>Years</div></div><div class="stat-card"><div class="stat-number">3</div><div>Branches</div></div><div class="stat-card"><div class="stat-number">50+</div><div>Items</div></div>`;
+    }
+
+    function renderBranches(containerId, isSelectable = true) {
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        container.innerHTML = "";
+        branches.forEach(branch => {
+            const card = document.createElement("div");
+            card.className = `branch-card ${selectedBranch?.id === branch.id && isSelectable ? 'selected' : ''}`;
+            card.innerHTML = `<i class="fas fa-store"></i><h3>${branch.name}</h3><div class="branch-address">${branch.address}</div><div class="branch-whatsapp"><i class="fab fa-whatsapp"></i> ${branch.whatsapp}</div>`;
+            if(isSelectable) {
+                card.style.cursor = "pointer";
+                card.onclick = () => { selectedBranch = branch; renderBranches("orderBranchGrid", true); renderBranches("homeBranchGrid", false); validateOrder(); };
+            }
+            container.appendChild(card);
+        });
+    }
+
+    // Scrollable Gallery with A4 ratio images
+    function renderScrollGallery() {
+        const galleryContainer = document.getElementById("menuGalleryScroll");
+        if(!galleryContainer) return;
+        galleryContainer.innerHTML = "";
+        menuGalleryImages.forEach(img => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "gallery-item";
+            itemDiv.innerHTML = `
+                <div class="gallery-item-img">
+                    <img src="${img.url}" alt="${img.title}" loading="lazy">
+                </div>
+                <div class="gallery-item-info">
+                    <h3>${img.title}</h3>
+                    <p>${img.desc}</p>
+                </div>
+            `;
+            galleryContainer.appendChild(itemDiv);
+        });
+    }
+
+    // Order menu - 3 column grid
+    function renderOrderMenu() {
+        const container = document.getElementById("orderMenuGrid");
+        if(!container) return;
+        container.innerHTML = "";
+        orderMenuItems.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "menu-item-card";
+            card.innerHTML = `
+                <div class="item-info">
+                    <h4>${item.name}</h4>
+                    <div class="item-price">R${item.price}</div>
+                    <span class="item-category">${item.category}</span>
+                </div>
+                <button class="add-to-cart" data-name="${item.name.replace(/'/g, "&quot;")}" data-price="${item.price}">Add</button>
+            `;
+            container.appendChild(card);
+        });
+        document.querySelectorAll(".add-to-cart").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const name = btn.getAttribute("data-name");
+                const price = parseFloat(btn.getAttribute("data-price"));
+                addToCart({ name, price });
+            });
+        });
+    }
+
+    function addToCart(item) {
+        const key = item.name;
+        if(cart[key]) cart[key].quantity += 1;
+        else cart[key] = { ...item, quantity: 1 };
+        renderCart();
+    }
+
+    function updateQuantity(key, delta) {
+        if(cart[key]) { cart[key].quantity += delta; if(cart[key].quantity <= 0) delete cart[key]; }
+        renderCart();
+    }
+    window.updateQuantityGlobal = updateQuantity;
+
+    function renderCart() {
+        const cartContainer = document.getElementById("cartItemsList");
+        const totalSpan = document.getElementById("cartTotal");
+        if(!cartContainer) return;
+        if(Object.keys(cart).length === 0) { cartContainer.innerHTML = "<div style='text-align:center; padding:0.6rem;'>Cart empty</div>"; totalSpan.innerText = "Total: R0.00"; return; }
+        let total = 0, html = "";
+        for(let key in cart) {
+            const item = cart[key];
+            const subtotal = item.price * item.quantity;
+            total += subtotal;
+            html += `<div class="cart-item-row"><div><strong>${item.name}</strong> x${item.quantity}<br><span style="font-size:0.6rem;">R${item.price}</span></div><div><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', -1)" style="background:#eee; border:none; width:24px; border-radius:50%; cursor:pointer;">-</button><span style="margin:0 4px;">${item.quantity}</span><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', 1)" style="background:#eee; border:none; width:24px; border-radius:50%; cursor:pointer;">+</button><span style="margin-left:6px;">R${subtotal}</span></div></div>`;
+        }
+        cartContainer.innerHTML = html;
+        totalSpan.innerText = `Total: R${total.toFixed(2)}`;
+        validateOrder();
+    }
+
+    function validateOrder() {
+        const warning = document.getElementById("orderWarning");
+        if(!selectedBranch) { if(warning) warning.innerHTML = "Select a branch first"; return false; }
+        if(Object.keys(cart).length === 0) { if(warning) warning.innerHTML = "Cart is empty"; return false; }
+        if(warning) warning.innerHTML = "✓ Ready to order"; return true;
+    }
+
+    function sendWhatsApp() {
+        if(!validateOrder()) return;
+        let itemsList = "", total = 0;
+        for(let key in cart) { const item = cart[key]; const subtotal = item.price * item.quantity; total += subtotal; itemsList += `- ${item.name} x ${item.quantity} = R${subtotal}\n`; }
+        const msg = encodeURIComponent(`KWA JERRY FAST FOOD ORDER\n\nBranch: ${selectedBranch.name}\nAddress: ${selectedBranch.address}\n\nOrder:\n${itemsList}\nTOTAL: R${total.toFixed(2)}\n\nThank you for choosing Kwa Jerry!`);
+        let phone = selectedBranch.whatsapp.replace(/\D/g, '');
+        if(phone.length === 10 && phone.startsWith('0')) phone = '27' + phone.substring(1);
+        window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+    }
+
+    function clearCart() { cart = {}; renderCart(); }
+
+    function handleContactSubmit(e) {
+        e.preventDefault();
+        const name=document.getElementById("contactName").value, branch=document.getElementById("contactBranch").value, phone=document.getElementById("contactPhone").value, subject=document.getElementById("contactSubject").value, msg=document.getElementById("contactMessage").value;
+        if(!name||!branch||!phone||!subject||!msg) { alert("Please fill all fields"); return; }
+        const contactMsg = encodeURIComponent(`KWA JERRY CONTACT\nName: ${name}\nBranch: ${branch}\nPhone: ${phone}\nSubject: ${subject}\nMessage: ${msg}`);
+        window.open(`https://wa.me/27698106598?text=${contactMsg}`, "_blank");
+        document.getElementById("contactForm").reset();
+        alert("Message sent via WhatsApp");
+    }
+
+    function renderContact() {
+        const grid = document.getElementById("contactGrid");
+        if(grid) grid.innerHTML = branches.map(b => `<div class="contact-card"><h3>${b.name}</h3><div class="contact-detail"><i class="fas fa-map-marker-alt"></i> ${b.address}</div><div class="contact-detail"><i class="fab fa-whatsapp"></i> ${b.whatsapp}</div><div class="contact-detail"><i class="fas fa-clock"></i> 10am-10pm</div><button class="view-menu-btn-small" onclick="window.open('https://wa.me/${b.whatsapp.replace(/\D/g, '')}')"><i class="fab fa-whatsapp"></i> WhatsApp</button></div>`).join("");
+    }
+
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+        document.getElementById(`${pageId}-page`).classList.add('active-page');
+        document.querySelectorAll('.nav-btn').forEach(btn => { if(btn.getAttribute('data-page')===pageId) btn.classList.add('active'); else btn.classList.remove('active'); });
+        if(pageId === 'home') { renderBranches("homeBranchGrid", false); renderStats(); }
+        if(pageId === 'order') { renderBranches("orderBranchGrid", true); renderOrderMenu(); renderCart(); }
+        if(pageId === 'menu') renderScrollGallery();
+        if(pageId === 'contact') renderContact();
+        window.scrollTo({ top: 0 });
+    }
+
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.addEventListener('click', () => showPage(btn.getAttribute('data-page'))));
+    document.getElementById("whatsappOrderBtn")?.addEventListener("click", sendWhatsApp);
+    document.getElementById("clearCartBtn")?.addEventListener("click", clearCart);
+    document.querySelector(".close-modal")?.addEventListener("click", () => document.getElementById("menuModal").style.display = "none");
+    window.onclick = (e) => { if(e.target === document.getElementById("menuModal")) document.getElementById("menuModal").style.display = "none"; };
+    document.getElementById("contactForm")?.addEventListener("submit", handleContactSubmit);
+
+    renderStats();
+    renderBranches("homeBranchGrid", false);
+    renderScrollGallery();
+</script>
+</body>
+</html>
