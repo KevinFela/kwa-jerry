@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Kwa Jerry Fast Food </title>
+    <title>Kwa Jerry Fast Food</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="shortcut icon" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
@@ -365,54 +366,66 @@
             }
         }
 
+        /* MENU GRID - FIXED FOR MOBILE: SINGLE COLUMN SO ALL ITEMS VISIBLE WITHOUT SWIPING */
         .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-direction: column;
             gap: 0.7rem;
             margin-top: 1rem;
         }
         .menu-item-card {
             background: white;
             border-radius: 16px;
-            padding: 0.7rem 0.3rem;
+            padding: 0.9rem 1rem;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            text-align: center;
+            justify-content: space-between;
+            text-align: left;
             border: 1px solid #eaeaea;
             transition: all 0.2s;
+            gap: 0.8rem;
+            flex-wrap: wrap;
         }
         .menu-item-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .item-info {
+            flex: 2;
         }
         .item-info h4 {
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.3;
         }
         .item-price {
             color: #990000;
-            font-weight: 700;
-            font-size: 0.75rem;
+            font-weight: 800;
+            font-size: 0.9rem;
             margin: 0.2rem 0;
         }
         .item-category {
-            font-size: 0.55rem;
+            font-size: 0.6rem;
             color: #888;
-            display: block;
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-top: 4px;
         }
         .add-to-cart {
             background: #000;
             color: white;
             border: none;
-            padding: 0.35rem 0.6rem;
-            border-radius: 30px;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
             cursor: pointer;
-            font-size: 0.65rem;
-            margin-top: 0.4rem;
-            width: 90%;
+            font-size: 0.7rem;
+            font-weight: 600;
+            min-width: 80px;
             transition: background 0.2s;
+            flex-shrink: 0;
         }
         .add-to-cart:hover {
             background: #990000;
@@ -432,14 +445,14 @@
             font-size: 1rem;
         }
         .cart-items-list {
-            max-height: 160px;
+            max-height: 180px;
             overflow-y: auto;
         }
         .cart-item-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 5px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #eee;
             font-size: 0.75rem;
             flex-wrap: wrap;
@@ -448,24 +461,24 @@
         .whatsapp-order-btn {
             background: #25D366;
             border: none;
-            padding: 8px 14px;
+            padding: 10px 18px;
             border-radius: 50px;
             font-weight: bold;
             color: white;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
         #clearCartBtn {
             background: #333;
-            padding: 6px 12px;
+            padding: 8px 16px;
             border-radius: 30px;
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
         }
 
         /* Contact Form */
@@ -486,22 +499,22 @@
         }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 8px 12px;
+            padding: 10px 14px;
             border: 1px solid #ddd;
-            border-radius: 12px;
+            border-radius: 14px;
             font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
         .submit-contact {
             background: #990000;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 40px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         footer {
@@ -510,7 +523,7 @@
             background: #000;
             color: #F2F2F2;
             margin-top: 1.5rem;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
         }
         .developer-credit {
             margin-top: 0.5rem;
@@ -547,24 +560,23 @@
             cursor: pointer;
             color: #990000;
         }
-        .modal-items-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.8rem;
-            margin-top: 1rem;
-            clear: both;
-        }
-        .modal-item {
-            background: #f9f9f9;
-            padding: 0.6rem;
-            border-radius: 14px;
-            text-align: center;
-            font-size: 0.8rem;
-        }
 
-        @media (max-width: 480px) {
+        @media (max-width: 550px) {
+            .menu-item-card {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+            .add-to-cart {
+                width: 100%;
+                margin-top: 0.3rem;
+            }
+            .branch-grid, .stats-grid, .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
             .branch-card h3 {
-                font-size: 0.65rem;
+                font-size: 0.7rem;
             }
             .branch-address {
                 font-size: 0.55rem;
@@ -572,18 +584,37 @@
             .stat-number {
                 font-size: 1.2rem;
             }
+        }
+        
+        @media (min-width: 768px) {
             .menu-grid {
-                gap: 0.5rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
             .menu-item-card {
-                padding: 0.5rem 0.2rem;
+                flex-direction: row;
+                align-items: center;
+                padding: 0.8rem;
             }
-            .item-info h4 {
-                font-size: 0.6rem;
+            .add-to-cart {
+                width: auto;
             }
-            .item-price {
-                font-size: 0.7rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .menu-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
+        }
+        
+        .order-branch-section {
+            margin-bottom: 1.5rem;
+        }
+        .warning-text {
+            color: #990000;
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
         }
     </style>
 </head>
@@ -600,7 +631,7 @@
         </div>
     </div>
     <div class="branch-badge">
-        <i class="fas fa-order"></i> order now
+        <i class="fas fa-motorcycle"></i> order now
     </div>
 </header>
 
@@ -659,12 +690,12 @@
         <div class="cart-panel" id="cartPanel">
             <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
             <div id="cartItemsList" class="cart-items-list">Cart is empty</div>
-            <div id="cartTotal" style="font-weight:800; font-size:1.1rem; margin:0.6rem 0;">Total: R0.00</div>
-            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <div id="cartTotal" style="font-weight:800; font-size:1.2rem; margin:0.6rem 0;">Total: R0.00</div>
+            <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center;">
                 <button class="whatsapp-order-btn" id="whatsappOrderBtn"><i class="fab fa-whatsapp"></i> Order via WhatsApp</button>
                 <button id="clearCartBtn">Clear Cart</button>
             </div>
-            <div id="orderWarning" style="color:#990000; font-size:0.65rem; margin-top:6px;"></div>
+            <div id="orderWarning" style="color:#990000; font-size:0.7rem; margin-top:8px;"></div>
         </div>
     </div>
 </div>
@@ -737,19 +768,17 @@
 </div>
 
 <footer>
-    <p><i class="fas fa-motorcycle"></i> Kwa Jerry Fast Food • </p>
+    <p><i class="fas fa-motorcycle"></i> Kwa Jerry Fast Food • Thank you for choosing us!</p>
     <div class="developer-credit">Developed by <a href="https://factorx.co.za" target="_blank">factorx.co.za</a></div>
 </footer>
 
-<div id="menuModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2 id="modalTitle" style="color:#990000; font-size:1.2rem;">Menu Items</h2>
-        <div id="modalItemsList" class="modal-items-grid"></div>
-    </div>
-</div>
-
 <script>
+    // CORRECTED BRANCH ADDRESS: Phatudi Kagiso Avenue
+    const branches = [
+        { id: "big_street", name: "Big Street", address: "2202 Phatudi Kagiso Avenue", whatsapp: "0733963205" },
+        { id: "ext12", name: "Ext 12", address: "16352 Geba Street Kagiso", whatsapp: "0698106598" },
+        { id: "protea_glen", name: "Protea Glen", address: "20910 Blackberry street ext 29", whatsapp: "0633579191" }
+    ];
 
     const menuGalleryImages = [
         { url: "kotas.png", title: "KOTA & MODERN J KOTAS", desc: "Kwa Jerry Kotas" },
@@ -759,42 +788,28 @@
         { url: "chips.png", title: "CHIPS & DAGWOODS", desc: "Kwa jerry dagwoods" }
     ];
 
-    const branches = [
-        { id: "big_street", name: "Big Street", address: "2202 Phatudi Kagiso", whatsapp: "0733963205" },
-        { id: "ext12", name: "Ext 12", address: "16352 Geba Street Kagiso", whatsapp: "0698106598" },
-        { id: "protea_glen", name: "Protea Glen", address: "20910 Blackberry ext 29", whatsapp: "0633579191" }
-    ];
-
     const orderMenuItems = [
-        // KOTAS
         { name: "J2 KOTA (+ Cheese)", price: 30, category: "KOTAS" }, { name: "J3 KOTA (+ Vienna)", price: 33, category: "KOTAS" }, { name: "J4 KOTA (+ Vienna & Cheese)", price: 35, category: "KOTAS" },
         { name: "J5 KOTA (+ Russian)", price: 37, category: "KOTAS" }, { name: "J6 KOTA (+ Burger & Cheese)", price: 38, category: "KOTAS" }, { name: "J7 KOTA (+ Russian & Cheese)", price: 40, category: "KOTAS" },
         { name: "J8 KOTA (+ Russian & Vienna)", price: 42, category: "KOTAS" }, { name: "J9 KOTA (Russian+Vienna+Cheese)", price: 45, category: "KOTAS" },
-        // MODERN J KOTAS
         { name: "J Tower (Burger+Russian+Steak+Ribs+Eggs)", price: 100, category: "MODERN KOTAS" }, { name: "J King (Burger+Russian+Ribs+Eggs)", price: 75, category: "MODERN KOTAS" },
         { name: "J Queen (Russian+Cheese+Burger+4Wings+Wors)", price: 115, category: "MODERN KOTAS" }, { name: "J Prince (Russian+Cheese+Burger+4Wings)", price: 95, category: "MODERN KOTAS" },
         { name: "J Princess (Burger+Cheese+Russian+Vienna)", price: 55, category: "MODERN KOTAS" },
-        // CHICKEN & MEALS
         { name: "Quarter Chicken Only", price: 30, category: "CHICKEN" }, { name: "Half Chicken Only", price: 60, category: "CHICKEN" }, { name: "Full Chicken Only", price: 100, category: "CHICKEN" },
         { name: "Quarter Chicken + Chips + Toast", price: 45, category: "CHICKEN MEALS" }, { name: "Quarter Chicken + Chips + Toast + Salad", price: 70, category: "CHICKEN MEALS" },
         { name: "Quarter Chicken + Salad + Toast", price: 55, category: "CHICKEN MEALS" }, { name: "Half Chicken + Chips + Toast + Salad", price: 95, category: "CHICKEN MEALS" },
         { name: "Half Chicken + Chips + Toast", price: 70, category: "CHICKEN MEALS" }, { name: "Full Chicken + Small Chips", price: 120, category: "CHICKEN MEALS" },
-        // PLATTERS
         { name: "Platter 1: Ribs + 2 Wings + Wors", price: 105, category: "PLATTERS" }, { name: "Platter: Chicken Kibab + 2 Wings + Wors", price: 85, category: "PLATTERS" },
         { name: "Platter: Steak + Wing + Wors", price: 95, category: "PLATTERS" }, { name: "Platter for Two: Steak + Quarter Chicken", price: 110, category: "PLATTERS" },
         { name: "Platter for Two: Ribs + Steak", price: 140, category: "PLATTERS" }, { name: "Platter for Three: Steak+Quarter+Wors+Kibab", price: 190, category: "PLATTERS" },
-        // SPECIALITY & RIBS
         { name: "12 Wings", price: 70, category: "SPECIALITY" }, { name: "12 Wings + Chips", price: 85, category: "SPECIALITY" }, { name: "6 Wings + Chips", price: 45, category: "SPECIALITY" },
         { name: "Steak + Chips + Wors", price: 75, category: "SPECIALITY" }, { name: "Mini J Ribs (200g + 2 Wings + Chips+Salad)", price: 85, category: "RIBS" },
         { name: "J Spare Ribs (400g + 4 Wings + Chips+Salad)", price: 155, category: "RIBS" },
-        // PAP / RICE MEALS
         { name: "Pap/Rice + Steak (2 Salads)", price: 55, category: "PAP & RICE" }, { name: "Pap/Rice + Chicken (2 Salads)", price: 45, category: "PAP & RICE" },
         { name: "Pap + Half Chicken (2 Salads)", price: 95, category: "PAP & RICE" }, { name: "Pap + Full Chicken (2 Salads)", price: 145, category: "PAP & RICE" },
-        // DAGWOODS & CHIPS
         { name: "Dagwood (Chips+Burg+Lettuce+Cheese+Egg)", price: 47, category: "DAGWOODS" }, { name: "Dagwood (Chips+Lettuce+Cheese+Egg+Rib)", price: 52, category: "DAGWOODS" },
         { name: "Dagwood Deluxe (Chips+Burger+Rib+Tomato+Egg)", price: 85, category: "DAGWOODS" }, { name: "Small Chips", price: 25, category: "CHIPS" },
         { name: "Medium Chips", price: 40, category: "CHIPS" }, { name: "Large Chips", price: 50, category: "CHIPS" },
-        // EXTRAS & SALADS
         { name: "Green Salad", price: 35, category: "SALADS" }, { name: "Green Salad + Chicken Fillets", price: 55, category: "SALADS" },
         { name: "Potato Salad", price: 25, category: "SALADS" }, { name: "Chakalaka", price: 20, category: "SALADS" },
         { name: "Extra: Egg", price: 4, category: "EXTRAS" }, { name: "Extra: Boneless Rib", price: 20, category: "EXTRAS" },
@@ -835,7 +850,7 @@
             itemDiv.className = "gallery-item";
             itemDiv.innerHTML = `
                 <div class="gallery-item-img">
-                    <img src="${img.url}" alt="${img.title}" loading="lazy">
+                    <img src="${img.url}" alt="${img.title}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23990000%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%20font-size%3D%2212%22%3EFood%3C%2Ftext%3E%3C%2Fsvg%3E'">
                 </div>
                 <div class="gallery-item-info">
                     <h3>${img.title}</h3>
@@ -859,7 +874,7 @@
                     <div class="item-price">R${item.price}</div>
                     <span class="item-category">${item.category}</span>
                 </div>
-                <button class="add-to-cart" data-name="${item.name.replace(/'/g, "&quot;")}" data-price="${item.price}">Add</button>
+                <button class="add-to-cart" data-name="${item.name.replace(/'/g, "&quot;")}" data-price="${item.price}">Add to cart</button>
             `;
             container.appendChild(card);
         });
@@ -895,7 +910,7 @@
             const item = cart[key];
             const subtotal = item.price * item.quantity;
             total += subtotal;
-            html += `<div class="cart-item-row"><div><strong>${item.name}</strong> x${item.quantity}<br><span style="font-size:0.6rem;">R${item.price}</span></div><div><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', -1)" style="background:#eee; border:none; width:24px; border-radius:50%; cursor:pointer;">-</button><span style="margin:0 4px;">${item.quantity}</span><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', 1)" style="background:#eee; border:none; width:24px; border-radius:50%; cursor:pointer;">+</button><span style="margin-left:6px;">R${subtotal}</span></div></div>`;
+            html += `<div class="cart-item-row"><div><strong>${item.name}</strong> x${item.quantity}<br><span style="font-size:0.6rem;">R${item.price} each</span></div><div><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', -1)" style="background:#eee; border:none; width:28px; border-radius:50%; cursor:pointer; font-size:1rem;">-</button><span style="margin:0 8px; font-weight:600;">${item.quantity}</span><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', 1)" style="background:#eee; border:none; width:28px; border-radius:50%; cursor:pointer; font-size:1rem;">+</button><span style="margin-left:10px; font-weight:700;">R${subtotal}</span></div></div>`;
         }
         cartContainer.innerHTML = html;
         totalSpan.innerText = `Total: R${total.toFixed(2)}`;
@@ -904,16 +919,16 @@
 
     function validateOrder() {
         const warning = document.getElementById("orderWarning");
-        if(!selectedBranch) { if(warning) warning.innerHTML = "⚠️ Select a branch first"; return false; }
-        if(Object.keys(cart).length === 0) { if(warning) warning.innerHTML = "⚠️ Cart is empty"; return false; }
-        if(warning) warning.innerHTML = "✓ Ready to order via WhatsApp"; return true;
+        if(!selectedBranch) { if(warning) warning.innerHTML = "⚠️ Please select a branch first"; return false; }
+        if(Object.keys(cart).length === 0) { if(warning) warning.innerHTML = "⚠️ Your cart is empty. Add some delicious items!"; return false; }
+        if(warning) warning.innerHTML = "✓ Ready to order! Click WhatsApp to send."; return true;
     }
 
     function sendWhatsApp() {
         if(!validateOrder()) return;
         let itemsList = "", total = 0;
         for(let key in cart) { const item = cart[key]; const subtotal = item.price * item.quantity; total += subtotal; itemsList += `- ${item.name} x ${item.quantity} = R${subtotal}\n`; }
-        const msg = encodeURIComponent(`🍔 KWA JERRY FAST FOOD ORDER 🍟\n\n📍 Branch: ${selectedBranch.name}\n🏠 Address: ${selectedBranch.address}\n\n📋 ORDER:\n${itemsList}\n💰 TOTAL: R${total.toFixed(2)}\n\n🙏 Thank you for choosing Kwa Jerry! Since 2006.`);
+        const msg = encodeURIComponent(`🍔 KWA JERRY FAST FOOD ORDER 🍟\n\n📍 Branch: ${selectedBranch.name}\n🏠 Address: ${selectedBranch.address}\n\n📋 ORDER:\n${itemsList}\n💰 TOTAL: R${total.toFixed(2)}\n\n🙏 Thank you for choosing Kwa Jerry!`);
         let phone = selectedBranch.whatsapp.replace(/\D/g, '');
         if(phone.length === 10 && phone.startsWith('0')) phone = '27' + phone.substring(1);
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
@@ -950,13 +965,12 @@
     document.querySelectorAll('.nav-btn').forEach(btn => btn.addEventListener('click', () => showPage(btn.getAttribute('data-page'))));
     document.getElementById("whatsappOrderBtn")?.addEventListener("click", sendWhatsApp);
     document.getElementById("clearCartBtn")?.addEventListener("click", clearCart);
-    document.querySelector(".close-modal")?.addEventListener("click", () => document.getElementById("menuModal").style.display = "none");
-    window.onclick = (e) => { if(e.target === document.getElementById("menuModal")) document.getElementById("menuModal").style.display = "none"; };
     document.getElementById("contactForm")?.addEventListener("submit", handleContactSubmit);
 
     renderStats();
     renderBranches("homeBranchGrid", false);
     renderScrollGallery();
+    renderContact();
 </script>
 </body>
 </html>
