@@ -593,6 +593,20 @@
             z-index: 1000;
             white-space: nowrap;
         }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            color: white;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -770,7 +784,6 @@
   window.db = db;
   
   console.log("✅ Firebase initialized with Firestore (compat version)");
-  console.log("window.db =", window.db);
 </script>
 
 <script>
@@ -866,7 +879,7 @@
             card.innerHTML = `<i class="fas fa-store"></i><h3>${branch.name}</h3><div class="branch-address">${branch.address}</div><div class="branch-whatsapp"><i class="fab fa-whatsapp"></i> ${branch.whatsapp}</div>`;
             if(isSelectable) {
                 card.style.cursor = "pointer";
-                card.onclick = () => { selectedBranch = branch; renderBranches("orderBranchGrid", true); renderBranches("homeBranchGrid", false); validateOrder(); };
+                card.onclick = () => { selectedBranch = branch; renderBranches("orderBranchGrid", true); renderBranches("homeBranchGrid", false); validateOrder(); showToast(`📍 ${branch.name} selected`); };
             }
             container.appendChild(card);
         });
@@ -950,6 +963,7 @@
                     if (!name.startsWith('Pap') && !name.startsWith('Rice')) finalName = `${selectedStarch} ${name}`;
                 }
                 addToCart({ name: finalName, price, originalName: name, needsStarch, starchChoice: starchSelections[name] });
+                showToast(`✓ Added: ${finalName}`);
             });
         });
     }
@@ -977,7 +991,8 @@
             const item = cart[key];
             const subtotal = item.price * item.quantity;
             total += subtotal;
-            html += `<div class="cart-item-row"><div><strong>${item.name}</strong> x${item.quantity}</div><div><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', -1)" style="background:#eee; border:none; width:24px; border-radius:50%;">-</button><span style="margin:0 5px;">${item.quantity}</span><button onclick="updateQuantityGlobal('${key.replace(/'/g, "\\'")}', 1)" style="background:#eee; border:none; width:24px; border-radius:50%;">+</button><span style="margin-left:6px;">R${subtotal}</span></div></div>`;
+            const safeKey = key.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+            html += `<div class="cart-item-row"><div><strong>${item.name}</strong> x${item.quantity}</div><div><button onclick="updateQuantityGlobal('${safeKey}', -1)" style="background:#eee; border:none; width:24px; border-radius:50%; cursor:pointer;">-</button><span style="margin:0 5px;">${item.quantity}</span><button onclick="updateQuantityGlobal('${safeKey}', 1)" style="background:#eee; border:none; width:24px; border-radius:50%; cursor:pointer;">+</button><span style="margin-left:6px;">R${subtotal}</span></div></div>`;
         }
         cartContainer.innerHTML = html;
         totalSpan.innerText = `Total: R${total.toFixed(2)}`;
@@ -991,7 +1006,7 @@
         if(warning) warning.innerHTML = "✓ Ready to order!"; return true;
     }
 
-    // FIXED: WhatsApp function that works on mobile - opens properly without being blocked
+    // FIXED: Direct WhatsApp redirect - no popup blockers, works on mobile
     async function sendWhatsApp() {
         console.log("🔥 Order button clicked");
         
@@ -1015,71 +1030,65 @@
             });
         }
 
-        // Save to Firebase (optional, won't block WhatsApp)
+        // Save to Firebase in background (don't wait)
         if (window.db) {
-            try {
-                await window.db.collection("orders").add({
-                    branch: selectedBranch.name,
-                    address: selectedBranch.address,
-                    items: orderItems,
-                    total: total,
-                    status: "pending",
-                    createdAt: new Date()
-                });
-                console.log("✅ Order saved to Firebase!");
-                showToast("✅ Order saved to database!");
-            } catch (e) {
-                console.error("❌ Error saving order: ", e);
-                // Don't show error toast to avoid confusion - WhatsApp will still work
-            }
+            window.db.collection("orders").add({
+                branch: selectedBranch.name,
+                address: selectedBranch.address,
+                items: orderItems,
+                total: total,
+                status: "pending",
+                createdAt: new Date()
+            }).then(() => console.log("✅ Order saved to Firebase!")).catch(e => console.error("Firebase save error:", e));
         }
 
-        // Format WhatsApp message
-        const orderDetails = `🍔 KWA JERRY FAST FOOD ORDER 🍟%0A%0A📍 Branch: ${selectedBranch.name}%0A🏠 Address: ${selectedBranch.address}%0A%0A📋 ORDER:%0A${encodeURIComponent(itemsList)}%0A💰 TOTAL: R${total.toFixed(2)}%0A%0A🙏 Thank you!`;
+        // Format WhatsApp message - using proper line breaks
+        const orderText = `🍔 KWA JERRY FAST FOOD ORDER 🍟\n\n📍 Branch: ${selectedBranch.name}\n🏠 Address: ${selectedBranch.address}\n\n📋 ORDER:\n${itemsList}\n💰 TOTAL: R${total.toFixed(2)}\n\n🙏 Thank you!`;
+        const encodedMsg = encodeURIComponent(orderText);
         
-        // Clean phone number: remove spaces, dashes, and non-digits
+        // Clean phone number
         let phone = selectedBranch.whatsapp.replace(/\D/g, '');
-        // Convert SA local number to international format
         if(phone.length === 10 && phone.startsWith('0')) {
             phone = '27' + phone.substring(1);
         } else if(phone.length === 9 && !phone.startsWith('0')) {
             phone = '27' + phone;
         }
         
-        // Ensure it's a valid number
         if(phone.length < 10) {
-            showToast("⚠️ Invalid WhatsApp number for this branch");
+            showToast("⚠️ Invalid WhatsApp number");
             return;
         }
         
-        // Build final WhatsApp URL
-        const waUrl = `https://wa.me/${phone}?text=${orderDetails}`;
-        console.log("Opening WhatsApp:", waUrl);
+        // Direct redirect - this works on mobile without popup blockers
+        const waUrl = `https://wa.me/${phone}?text=${encodedMsg}`;
+        console.log("Redirecting to:", waUrl);
         
-        // For mobile: use window.open with _blank which works reliably on iOS/Android
-        // Add a small delay to ensure it's not blocked by any async operation
-        setTimeout(() => {
-            window.open(waUrl, '_blank');
-        }, 100);
+        // Use window.location.href for direct navigation (most reliable on mobile)
+        window.location.href = waUrl;
         
         showToast("📱 Opening WhatsApp...");
     }
 
-    function clearCart() { cart = {}; renderCart(); }
+    function clearCart() { 
+        cart = {}; 
+        renderCart(); 
+        showToast("🗑️ Cart cleared");
+    }
 
     function handleContactSubmit(e) {
         e.preventDefault();
         const name=document.getElementById("contactName").value, branch=document.getElementById("contactBranch").value, phone=document.getElementById("contactPhone").value, subject=document.getElementById("contactSubject").value, msg=document.getElementById("contactMessage").value;
         if(!name||!branch||!phone||!subject||!msg) { alert("Fill all fields"); return; }
-        const contactMsg = encodeURIComponent(`KWA JERRY CONTACT%0AName: ${name}%0ABranch: ${branch}%0APhone: ${phone}%0ASubject: ${subject}%0AMessage: ${msg}`);
-        window.open(`https://wa.me/27698106598?text=${contactMsg}`, "_blank");
+        const contactMsg = `KWA JERRY CONTACT\n\nName: ${name}\nBranch: ${branch}\nPhone: ${phone}\nSubject: ${subject}\nMessage: ${msg}`;
+        const encodedMsg = encodeURIComponent(contactMsg);
+        window.location.href = `https://wa.me/27698106598?text=${encodedMsg}`;
         document.getElementById("contactForm").reset();
-        showToast("Message sent via WhatsApp");
+        showToast("Opening WhatsApp...");
     }
 
     function renderContact() {
         const grid = document.getElementById("contactGrid");
-        if(grid) grid.innerHTML = branches.map(b => `<div class="contact-card"><h3>${b.name}</h3><div class="contact-detail"><i class="fas fa-map-marker-alt"></i> ${b.address}</div><div class="contact-detail"><i class="fab fa-whatsapp"></i> ${b.whatsapp}</div><button class="view-menu-btn-small" onclick="window.open('https://wa.me/${b.whatsapp.replace(/\\D/g, '')}', '_blank')"><i class="fab fa-whatsapp"></i> Chat</button></div>`).join("");
+        if(grid) grid.innerHTML = branches.map(b => `<div class="contact-card"><h3>${b.name}</h3><div class="contact-detail"><i class="fas fa-map-marker-alt"></i> ${b.address}</div><div class="contact-detail"><i class="fab fa-whatsapp"></i> ${b.whatsapp}</div><button class="view-menu-btn-small" onclick="window.location.href='https://wa.me/${b.whatsapp.replace(/\\D/g, '')}'"><i class="fab fa-whatsapp"></i> Chat</button></div>`).join("");
     }
 
     function showPage(pageId) {
