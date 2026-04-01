@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Kwa Jerry Fast Food</title>
-    <!-- Favicon - now uses custom logo.png with fallback to burger emoji on red background -->
+    <!-- Favicon - custom logo.png with fallback -->
     <link rel="icon" type="image/png" href="logo.png" onerror="this.onerror=null; this.href='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23990000\'/%3E%3Ctext x=\'50\' y=\'70\' font-size=\'50\' text-anchor=\'middle\' fill=\'white\' font-family=\'Arial\'%3E🍔%3C/text%3E%3C/svg%3E'">
     <link rel="shortcut icon" href="logo.png" onerror="this.onerror=null; this.href='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23990000\'/%3E%3Ctext x=\'50\' y=\'70\' font-size=\'50\' text-anchor=\'middle\' fill=\'white\' font-family=\'Arial\'%3E🍔%3C/text%3E%3C/svg%3E'">
     <link rel="apple-touch-icon" href="logo.png" onerror="this.onerror=null; this.href='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23990000\'/%3E%3Ctext x=\'50\' y=\'70\' font-size=\'50\' text-anchor=\'middle\' fill=\'white\' font-family=\'Arial\'%3E🍔%3C/text%3E%3C/svg%3E'">
@@ -417,7 +417,7 @@
             background: #990000;
         }
         
-        /* Pap/Rice selector modal or inline? Using a small inline selector for relevant items */
+        /* Pap/Rice selector */
         .starch-selector {
             display: flex;
             gap: 0.3rem;
@@ -437,14 +437,6 @@
             font-family: inherit;
         }
         .starch-option.selected {
-            background: #990000;
-            color: white;
-        }
-        .starch-option.pap-selected {
-            background: #990000;
-            color: white;
-        }
-        .starch-option.rice-selected {
             background: #990000;
             color: white;
         }
@@ -587,6 +579,19 @@
             color: #990000;
             font-size: 0.65rem;
             margin-top: 0.3rem;
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            z-index: 1000;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -742,6 +747,31 @@
     <div class="developer-credit">Developed by <a href="https://factorx.co.za" target="_blank">factorx.co.za</a></div>
 </footer>
 
+<!-- Firebase Integration with Firestore -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyDXL7TWRXlOawCNHgjdFOAktyyuVVKeP1I",
+    authDomain: "kwa-jerry-web.firebaseapp.com",
+    projectId: "kwa-jerry-web",
+    storageBucket: "kwa-jerry-web.firebasestorage.app",
+    messagingSenderId: "677790086430",
+    appId: "1:677790086430:web:5a494350c98b31fd20c50f"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  console.log("Firebase initialized with Firestore");
+
+  // Expose db and addDoc to global for the main script to use
+  window.db = db;
+  window.addDocFirestore = addDoc;
+  window.collectionRef = collection;
+</script>
+
 <script>
     const branches = [
         { id: "big_street", name: "Big Street", address: "2202 Phatudi Kagiso Avenue", whatsapp: "0733963205" },
@@ -758,7 +788,6 @@
     ];
 
     // Menu items with starch selection for PAP/RICE items
-    // Items that need starch choice: all PAP & RICE category items
     const orderMenuItems = [
         { name: "J2 KOTA", price: 30, category: "KOTA", needsStarch: false },
         { name: "J3 KOTA", price: 33, category: "KOTA", needsStarch: false },
@@ -810,10 +839,16 @@
     ];
 
     let selectedBranch = null;
-    let cart = {}; // stores { name, price, quantity, starchChoice? }
-
-    // Track starch selection per item (for UI)
+    let cart = {};
     let starchSelections = {};
+
+    function showToast(msg) {
+        let toast = document.createElement('div');
+        toast.className = 'toast-msg';
+        toast.innerText = msg;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2500);
+    }
 
     function renderStats() {
         const statsDiv = document.getElementById("statsGrid");
@@ -865,7 +900,6 @@
             card.className = "menu-item-card";
             let starchSelectorHtml = '';
             if (item.needsStarch) {
-                // For items that need starch, we show Pap/Rice selector
                 const savedChoice = starchSelections[item.name] || 'Pap';
                 starchSelectorHtml = `
                     <div class="starch-selector">
@@ -887,19 +921,15 @@
             container.appendChild(card);
         });
         
-        // Attach starch selector listeners
         document.querySelectorAll('.starch-option').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const itemName = btn.getAttribute('data-item');
                 const starchType = btn.getAttribute('data-starch');
                 starchSelections[itemName] = starchType;
-                // Update UI for this item's starch options
                 const parentCard = btn.closest('.menu-item-card');
                 if (parentCard) {
-                    parentCard.querySelectorAll('.starch-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
+                    parentCard.querySelectorAll('.starch-option').forEach(opt => opt.classList.remove('selected'));
                     btn.classList.add('selected');
                     const noteDiv = parentCard.querySelector('.item-starch-note');
                     if (noteDiv) noteDiv.innerHTML = `✓ ${starchType} selected`;
@@ -907,7 +937,6 @@
             });
         });
         
-        // Attach add to cart listeners
         document.querySelectorAll(".add-to-cart").forEach(btn => {
             btn.addEventListener("click", () => {
                 const name = btn.getAttribute("data-name");
@@ -916,10 +945,8 @@
                 let finalName = name;
                 if (needsStarch) {
                     const selectedStarch = starchSelections[name] || 'Pap';
-                    finalName = `${selectedStarch} & ${name.replace(/^(Pap|Rice) & /, '')}`;
-                    if (!name.startsWith('Pap') && !name.startsWith('Rice')) {
-                        finalName = `${selectedStarch} ${name}`;
-                    }
+                    finalName = `${selectedStarch} ${name.replace(/^(Pap|Rice) & /, '')}`;
+                    if (!name.startsWith('Pap') && !name.startsWith('Rice')) finalName = `${selectedStarch} ${name}`;
                 }
                 addToCart({ name: finalName, price, originalName: name, needsStarch, starchChoice: starchSelections[name] });
             });
@@ -963,18 +990,54 @@
         if(warning) warning.innerHTML = "✓ Ready to order!"; return true;
     }
 
-    function sendWhatsApp() {
+    // UPDATED: Async sendWhatsApp with Firebase save
+    async function sendWhatsApp() {
         if(!validateOrder()) return;
+
         let itemsList = "", total = 0;
-        for(let key in cart) { 
-            const item = cart[key]; 
-            const subtotal = item.price * item.quantity; 
-            total += subtotal; 
+        let orderItems = [];
+
+        for(let key in cart) {
+            const item = cart[key];
+            const subtotal = item.price * item.quantity;
+            total += subtotal;
             itemsList += `- ${item.name} x ${item.quantity} = R${subtotal}\n`;
+            orderItems.push({
+                name: item.name,
+                price: item.price,
+                quantity: item.quantity
+            });
         }
-        const msg = encodeURIComponent(`🍔 KWA JERRY ORDER 🍟\n📍 ${selectedBranch.name}\n🏠 ${selectedBranch.address}\n\n📋 ORDER:\n${itemsList}\n💰 TOTAL: R${total.toFixed(2)}\n\n🙏 Thank you for choosing Kwa Jerry!`);
+
+        // 🔥 SAVE TO FIREBASE
+        try {
+            const { addDoc, collection } = window;
+            const db = window.db;
+            if (db && addDoc) {
+                await addDoc(collection(db, "orders"), {
+                    branch: selectedBranch.name,
+                    address: selectedBranch.address,
+                    items: orderItems,
+                    total: total,
+                    status: "pending",
+                    createdAt: new Date()
+                });
+                console.log("Order saved to Firebase!");
+                showToast("✅ Order saved successfully!");
+            } else {
+                console.warn("Firestore not ready, skipping save");
+            }
+        } catch (e) {
+            console.error("Error saving order: ", e);
+            showToast("⚠️ Order saved locally, but database error");
+        }
+
+        // WhatsApp message (still works)
+        const msg = encodeURIComponent(`🍔 KWA JERRY FAST FOOD ORDER 🍟\n\n📍 Branch: ${selectedBranch.name}\n🏠 Address: ${selectedBranch.address}\n\n📋 ORDER:\n${itemsList}\n💰 TOTAL: R${total.toFixed(2)}\n\n🙏 Thank you!`);
+
         let phone = selectedBranch.whatsapp.replace(/\D/g, '');
         if(phone.length === 10 && phone.startsWith('0')) phone = '27' + phone.substring(1);
+
         window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
     }
 
