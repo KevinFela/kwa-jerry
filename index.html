@@ -747,11 +747,12 @@
     <div class="developer-credit">Developed by <a href="https://factorx.co.za" target="_blank">factorx.co.za</a></div>
 </footer>
 
-<!-- Firebase Integration with Firestore -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
-  
+<!-- FIREBASE COMPATIBILITY FIX - Using compat version for global access -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script>
+  // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyDXL7TWRXlOawCNHgjdFOAktyyuVVKeP1I",
     authDomain: "kwa-jerry-web.firebaseapp.com",
@@ -762,14 +763,14 @@
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  console.log("Firebase initialized with Firestore");
-
-  // Expose db and addDoc to global for the main script to use
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  
+  // Expose db globally so it's accessible
   window.db = db;
-  window.addDocFirestore = addDoc;
-  window.collectionRef = collection;
+  
+  console.log("✅ Firebase initialized with Firestore (compat version)");
+  console.log("window.db =", window.db);
 </script>
 
 <script>
@@ -990,8 +991,11 @@
         if(warning) warning.innerHTML = "✓ Ready to order!"; return true;
     }
 
-    // UPDATED: Async sendWhatsApp with Firebase save
+    // UPDATED: sendWhatsApp with Firebase save using compat version
     async function sendWhatsApp() {
+        console.log("🔥 Order button clicked");
+        console.log("window.db =", window.db);
+        
         if(!validateOrder()) return;
 
         let itemsList = "", total = 0;
@@ -1009,12 +1013,10 @@
             });
         }
 
-        // 🔥 SAVE TO FIREBASE
-        try {
-            const { addDoc, collection } = window;
-            const db = window.db;
-            if (db && addDoc) {
-                await addDoc(collection(db, "orders"), {
+        // 🔥 SAVE TO FIREBASE using compat version (window.db.collection)
+        if (window.db) {
+            try {
+                await window.db.collection("orders").add({
                     branch: selectedBranch.name,
                     address: selectedBranch.address,
                     items: orderItems,
@@ -1022,14 +1024,15 @@
                     status: "pending",
                     createdAt: new Date()
                 });
-                console.log("Order saved to Firebase!");
-                showToast("✅ Order saved successfully!");
-            } else {
-                console.warn("Firestore not ready, skipping save");
+                console.log("✅ Order saved to Firebase!");
+                showToast("✅ Order saved to database!");
+            } catch (e) {
+                console.error("❌ Error saving order: ", e);
+                showToast("⚠️ Order saved locally, but database error");
             }
-        } catch (e) {
-            console.error("Error saving order: ", e);
-            showToast("⚠️ Order saved locally, but database error");
+        } else {
+            console.error("❌ window.db is undefined - Firebase not loaded");
+            showToast("⚠️ Database not connected, order sent via WhatsApp only");
         }
 
         // WhatsApp message (still works)
